@@ -62,4 +62,16 @@ class AuthController extends Controller
             ],200);
         }
     }
+    public function getUserInfo(){
+        $user = Auth::user();
+        $user_info = User::where('id', $user->id)->first();
+        return response()->json($user_info,200);
+
+    }
+    public function getUserInfoById($id){
+        $user_info = User::where('id', $id)->first();
+        return response()->json($user_info,200);
+
+    }
+    
 }
