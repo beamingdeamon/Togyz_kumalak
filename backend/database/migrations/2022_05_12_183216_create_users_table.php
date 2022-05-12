@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('password');
+            $table->integer('wins')->default('0');
+            $table->integer('loses')->default('0');
             $table->timestamps();
         });
     }
