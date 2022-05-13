@@ -3,8 +3,10 @@
         <div v-for="(section, index) in data" :key="index">
             <label v-if="index < 9">{{section}}</label>
             <div class="section">
-                <div v-for="item in section" :key="item" class="kumalak"></div>
+                <div v-for="item in section" :key="item" class="kumalak">
+                </div>
             </div>
+            <div class="line"></div>
             <label v-if="index >= 9">{{section}}</label>
         </div>
     </div>
@@ -39,6 +41,14 @@ const data = ref([ 9, 9, 9, 9, 9, 9, 9, 9, 9,
     margin: 5px;
     border: 3px solid black;
     border-radius: 5px;
+
+    cursor: pointer;
+
+    caret-color: transparent;
+}
+
+.section:hover {
+    text-decoration: underline;
 }
 
 .kumalak {
@@ -47,6 +57,14 @@ const data = ref([ 9, 9, 9, 9, 9, 9, 9, 9, 9,
     border-radius: 50%;
     background-color: saddlebrown;
     margin: auto;
+}
+
+.line {
+    height: 5px;
+    background-color: black;
+    width: 84px;
+    margin: 0 auto;
+    border-radius: 2px;
 }
 
 </style>

@@ -8,8 +8,8 @@
 </template>
 
 <script lang="ts" setup>
-import axios from "axios";
 import { ref, defineEmits } from "vue";
+import axios from 'axios'
 const emit = defineEmits(['close'])
 
 const data = ref({email: '', password: ''})

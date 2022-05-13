@@ -4,7 +4,7 @@
       <button class="header__button" @click="showLogin">Логин</button>
       <button class="header__button" @click="showSignUp">Регистрация</button>
     </section>
-    <board v-if="token" />
+    <gameMenu class="center" v-if="token" />
     <login v-if="isLoginShowed" @close="hideLogin"/>
     <SignUp v-if="isSignUpShowed" @close="hideSignUp"/>
   </div>
@@ -13,7 +13,7 @@
 <script lang="ts" setup>
 import login from './components/login.vue'
 import SignUp from './components/SignUp.vue'
-import board from './components/board.vue'
+import gameMenu from './components/gameMenu.vue'
 import { ref } from "vue";
 
 let token = ref(localStorage.getItem('token'))
@@ -57,5 +57,12 @@ const hideSignUp = () => {
   color: white;
   font-size: 17px;
   cursor: pointer;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 </style>
