@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="options" v-if="!joinedToGame">
+        <div class="options">
             <div class="options__block">
                 <label class="options__game-code-text" v-if="gameCode">Код игры: <span class="options__game-code">{{ gameCode}}</span></label>
                 <button class="options__button"  style="margin-left:10px" @click="createGame">Создать игру</button>
@@ -11,16 +11,17 @@
                 <button class="options__button options__button_higher" style="margin-left:10px" @click="joinToGameByCode">Присоедениться по коду</button>
             </div>
         </div>
-        <board v-if="joinedToGame" />
     </div>
 </template>
 
 <script lang="ts" setup>
-import board from "./board.vue"
 import axios from 'axios'
 import { ref } from "vue";
+import { useRouter, useRoute } from 'vue-router'
 
-const joinedToGame = ref(false)
+const router = useRouter();
+const route = useRoute()
+
 const gameCode = ref('')
 
 const createGame = async () => {
@@ -35,7 +36,12 @@ const createGame = async () => {
 }
 
 const joinToGame = async () => {
-    joinedToGame.value = true
+    router.push({
+        name: 'board',
+        params: {
+            game_code: gameCode.value
+        }
+    })
 }
 
 const joinToGameByCode = async () => {
@@ -46,7 +52,7 @@ const joinToGameByCode = async () => {
         })
         apiClient.post('/game/connect/' + gameCode.value)
         .then(res => {
-            joinedToGame.value = true;
+            joinToGame()
         })
     }
     else {

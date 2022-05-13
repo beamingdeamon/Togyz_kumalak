@@ -1,42 +1,8 @@
 <template>
-  <div>
-    <section v-if="!token" class="header"> 
-      <button class="header__button" @click="showLogin">Логин</button>
-      <button class="header__button" @click="showSignUp">Регистрация</button>
-    </section>
-    <gameMenu class="center" v-if="token" />
-    <login v-if="isLoginShowed" @close="hideLogin"/>
-    <SignUp v-if="isSignUpShowed" @close="hideSignUp"/>
-  </div>
+  <router-link></router-link>
 </template>
 
 <script lang="ts" setup>
-import login from './components/login.vue'
-import SignUp from './components/SignUp.vue'
-import gameMenu from './components/gameMenu.vue'
-import { ref } from "vue";
-
-let token = ref(localStorage.getItem('token'))
-
-let isLoginShowed = ref(false) 
-
-let isSignUpShowed = ref(false) 
-
-const showLogin = () => {
-  isLoginShowed.value = true;
-  isSignUpShowed.value = false;
-}
-const hideLogin = () => {
-  isLoginShowed.value = false;
-}
-
-const showSignUp= () => {
-  isSignUpShowed.value = true;
-  isLoginShowed.value = false;
-}
-const hideSignUp = () => {
-  isSignUpShowed.value = false;
-}
 </script>
 
 <style>

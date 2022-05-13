@@ -13,10 +13,28 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
+
+const showLine = () => {
+    for(let index=0; index<18;index++) {
+        const section = document.getElementsByClassName('section')[index] as HTMLElement | null;
+        const line = document.getElementsByClassName('line')[index] as HTMLElement | null;
+
+        section.addEventListener('mouseover', () => {
+            line.style.visibility = 'inherit'
+        })
+
+        section.addEventListener('mouseleave', () => {
+            line.style.visibility = 'hidden'
+        })
+    }    
+};
+
+onMounted(showLine)
 
 const data = ref([ 9, 9, 9, 9, 9, 9, 9, 9, 9,
                    9, 9, 9, 9, 9, 9, 9, 9, 9])
+
 </script>
 
 <style>
@@ -47,10 +65,6 @@ const data = ref([ 9, 9, 9, 9, 9, 9, 9, 9, 9,
     caret-color: transparent;
 }
 
-.section:hover {
-    text-decoration: underline;
-}
-
 .kumalak {
     width: 30px;
     height: 30px;
@@ -60,11 +74,13 @@ const data = ref([ 9, 9, 9, 9, 9, 9, 9, 9, 9,
 }
 
 .line {
+    visibility: hidden;
     height: 5px;
     background-color: black;
     width: 84px;
     margin: 0 auto;
     border-radius: 2px;
 }
+
 
 </style>
