@@ -4,9 +4,11 @@
       <button class="header__button" @click="showLogin">Логин</button>
       <button class="header__button" @click="showSignUp">Регистрация</button>
     </section>
-    <gameMenu class="center" v-if="token" />
-    <login v-if="isLoginShowed" @close="hideLogin"/>
-    <SignUp v-if="isSignUpShowed" @close="hideSignUp"/>
+    <div class="wrapper">
+      <gameMenu class="center" v-if="token" />
+      <login v-if="isLoginShowed" @close="hideLogin"/>
+      <SignUp v-if="isSignUpShowed" @close="hideSignUp"/>
+    </div>
   </div>
 </template>
 
@@ -40,25 +42,35 @@ const hideSignUp = () => {
 </script>
 
 <style>
+body{
+  margin: 0;
+  padding: 0;
+}
 .header {
   display: flex;
-  gap: 20px;
-
+  align-items: center;
+  width: 100vw;
+  height: 8vh;
+  justify-content: center;
+  background-color: rgb(10, 12, 14);
   position: fixed;
-  top: 40px;
-  right: 40px;
+  backdrop-filter: blur(20px);
 }
 .header__button {
   width: 177px;
   height: 30px;
-  background-color: cornflowerblue;
+  background-color: rgb(10, 12, 14);
   border-color: transparent;
   border-radius: 5px;
   color: white;
   font-size: 17px;
   cursor: pointer;
 }
-
+.wrapper{
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(56, 56, 56);
+}
 .center {
   position: absolute;
   top: 50%;
