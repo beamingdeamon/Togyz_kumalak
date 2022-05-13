@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\MoveController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +29,7 @@ Route::group(['prefix' => 'user','as' => 'api.','namespace' => 'Api\User','middl
 Route::group(['prefix' => 'game','as' => 'api.','namespace' => 'Api\Game','middleware' => ['auth:sanctum']], function () {
     Route::post('/create', [GameController::class, 'createGame']);
     Route::get('/get/{id}', [GameController::class, 'getGameInfo']);
+    Route::post('/connect/{game_code}', [GameController::class, 'connectToGame']);
+    Route::post('/usermove/{game_id}', [MoveController::class, 'userMove']);
+
 });
