@@ -1,10 +1,10 @@
 <template>
   <div>
-    <section v-if="token" class="header"> 
+    <section v-if="!token" class="header"> 
       <button class="header__button" @click="showLogin">Логин</button>
       <button class="header__button" @click="showSignUp">Регистрация</button>
     </section>
-    <board v-else />
+    <board v-if="token" />
     <login v-if="isLoginShowed" @close="hideLogin"/>
     <SignUp v-if="isSignUpShowed" @close="hideSignUp"/>
   </div>
@@ -16,7 +16,8 @@ import SignUp from './components/SignUp.vue'
 import board from './components/board.vue'
 import { ref } from "vue";
 
-let token = localStorage.getItem('token')
+let token = ref(localStorage.getItem('token'))
+
 let isLoginShowed = ref(false) 
 
 let isSignUpShowed = ref(false) 
