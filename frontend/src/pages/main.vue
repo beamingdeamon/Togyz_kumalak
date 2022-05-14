@@ -11,12 +11,19 @@
 </template>
 
 <script lang="ts" setup>
-import login from './components/login.vue'
-import SignUp from './components/SignUp.vue'
-import gameMenu from './components/gameMenu.vue'
-import { ref } from "vue";
+import login from '../components/login.vue'
+import SignUp from '../components/SignUp.vue'
+import gameMenu from '../components/gameMenu.vue'
+import { ref, onMounted } from "vue";
 
 let token = ref(localStorage.getItem('token'))
+
+const showToken = () => {
+  console.log('token: ',localStorage.getItem('token'))
+} 
+onMounted(() => { 
+  showToken()
+})
 
 let isLoginShowed = ref(false) 
 

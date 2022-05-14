@@ -1,10 +1,15 @@
 <template>
-  <div class="login">
+  <div class="register">
       <label class="login__close" @click="$emit('close')">x</label>
-      <input class="login__input" placeholder="user name" v-model="data.name"/>
-      <input class="login__input" placeholder="email" v-model="data.email"/>
-      <input class="login__input" type="password" v-model="data.password" placeholder="пароль" />
-      <button class="login__button" @click="register">Зарегистрироваться</button>
+      <div class="reg_input_wrappers">
+        <h2>Введите имя: </h2>
+        <input class="login__input" placeholder="Имя" v-model="data.name"/>
+        <h2>Введите почту: </h2>
+        <input class="login__input" placeholder="test@mail.ru" v-model="data.email"/>
+        <h2>Введите пароль: </h2>
+        <input class="login__input" type="password" v-model="data.password" placeholder="Пароль" />
+        <button class="reg__button" @click="register">Зарегистрироваться</button>
+      </div>
   </div>
 </template>
 
@@ -32,11 +37,9 @@ const register = async () => {
 </script>
 
 <style>
-.login {
+.register {
     display: flex;
     flex-flow: column;
-    align-items: center;
-    justify-content: center;
     gap: 20px;
 
     position: absolute;
@@ -44,39 +47,32 @@ const register = async () => {
     left: 50%;
     transform: translate(-50%, -50%);
 
-    width: 300px;
-    height: 250px;
+    width: 450px !important;
+    height: 420px !important;
 
-    background-color: bisque;
+    background-color: rgb(0, 0, 0) !important;
 
-    border-radius: 20px;
+    border-radius: 10px;
 }
-
-.login__input {
-  height: 25px;
-  border-radius: 5px;
-  border-color: white;
+.reg_input_wrappers{
+  margin-left: 4vw;
+  margin-top: 7vh;
+  height: 85%;
+  display: flex;
+  flex-direction: column;
 }
-
-.login__button {
-    width: 177px;
-    height: 30px;
-    background-color: cornflowerblue;
+.reg__button{
+    
+    width: 210px;
+    height: 50px;
+    background-color: rgb(88, 8, 8) !important;
     border-color: transparent;
     border-radius: 5px;
     color: white;
     font-size: 17px;
     cursor: pointer;
+    margin-top: 5vh;
+    margin-left: 42%;
 }
 
-.login__close {
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  font-size: 25px;
-  font-weight: 900;
-  font-family: cursive;
-  cursor: pointer;
-  caret-color: transparent;
-}
 </style>

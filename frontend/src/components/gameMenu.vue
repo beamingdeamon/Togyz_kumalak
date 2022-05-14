@@ -3,7 +3,7 @@
         <div class="options">
             <div class="options__block">
                 <label class="options__game-code-text" v-if="gameCode">Код игры: <span class="options__game-code">{{ gameCode}}</span></label>
-                <button class="options__button"  style="margin-left:10px" @click="createGame">Создать игру</button>
+                <button class="create_game_button"  style="margin-left:10px" @click="createGame">Создать игру</button>
                 <button class="options__button" v-if="gameCode" style="margin-left:10px" @click="joinToGame">Перейти на доску</button>
             </div>
             <div style="margin-top:40px;">
@@ -63,10 +63,20 @@ const joinToGameByCode = async () => {
 </script>
 
 <style scoped>
+.create_game_button{
+  width: 300px;
+  height: 90px;
+  background-color: black;
+  border-color: transparent;
+  border-radius: 5px;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+}
 .options__button {
-  width: 177px;
-  height: 30px;
-  background-color: cornflowerblue;
+  width: 300px;
+  height: 90px;
+  background-color: black;
   border-color: transparent;
   border-radius: 5px;
   color: white;
@@ -74,7 +84,10 @@ const joinToGameByCode = async () => {
   cursor: pointer;
 }
 .options__input {
-    width: 192px;
+    width: 200px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 10px;
 }
 
 .options__button_higher {
@@ -83,8 +96,12 @@ const joinToGameByCode = async () => {
 
 .options__game-code-text {
     display: block;
-    width: 200px;
-    font-size: 20px;
+    width: 400px;
+    font-size: 30px;
+    color: white;
+    position: absolute;
+    top: -40%;
+    left: 35%;
 }
 .options__game-code {
     color: green;
