@@ -3,11 +3,11 @@
         <div v-for="(column, index) in opponentColumn" :key="index">
             <label>{{column}}</label>
             <div class="section" @click="opponentMove(index)">
-                <div v-for="item in column" :key="item" class="kumalak">
-                </div>
+                <div v-if="column == -1" class="tozdyk"></div>
+                <div v-else v-for="item in column" :key="item" class="kumalak"></div>
             </div>
             <div class="line"></div>
-            <label>{{section}}  Оппонент{{index}}</label>
+            <label>{{section}}</label>
         </div>
         <div v-for="(column, index) in userColumn" :key="index">
             <label>{{column}}</label>
@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="line"></div>
-            <label>{{section}}  Юзер {{index}}</label>
+            <label>{{section}}</label>
         </div>
     </div>
 </template>
@@ -63,7 +63,7 @@ const opponentMove =async (index: number) => {
             baseURL: 'http://localhost:8000/api',
             headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
         })
-        apiClient.post('/game/opponentmove/' + route.params.id, { 'column' : index + 1})
+        apiClient.post('/game/opponentmove/' + route.params.id, { 'column' : 9 - index })
         .then(res => {
             setGameData(res)
         })
