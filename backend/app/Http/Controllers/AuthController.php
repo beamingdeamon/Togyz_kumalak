@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Models\User;
+use App\Models\Game;
 
 class AuthController extends Controller
 {
@@ -72,6 +73,13 @@ class AuthController extends Controller
         $user_info = User::where('id', $id)->first();
         return response()->json($user_info,200);
 
+    }
+    public function getUserGames(){
+        $user = Auth::user();
+        $user_info = Game::where('user_id', $user->id)->get();
+        $opponent_info = Game::where('opponent_id', $user->id)->get();
+
+        return response()->json(['user_games'=>$user_info, 'opponent_games'=>$opponent_info],200);
     }
     
 }

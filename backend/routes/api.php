@@ -23,6 +23,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/userinfo/{id}', [AuthController::class, 'getUserInfoById']);
 Route::group(['prefix' => 'user','as' => 'api.','namespace' => 'Api\User','middleware' => ['auth:sanctum']], function () {
     Route::get('/userinfo', [AuthController::class, 'getUserInfo']);
+    Route::get('/games', [AuthController::class, 'getUserGames']);
 });
 
 
