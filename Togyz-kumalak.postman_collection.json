@@ -139,6 +139,46 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Move of Opponent",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4|CmTRfDtHBNnewKowkqZDWqqS3XcV83IEjWlVeAAP",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"column\": 7\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/game/opponentmove/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"game",
+								"opponentmove",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -243,6 +283,36 @@
 						"api",
 						"userinfo",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All User Games",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "2|1kGhBYXVVaYYWL1dWfheWk8BYq64hs53VkuFhpmH",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/api/user/games",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"games"
 					]
 				}
 			},
