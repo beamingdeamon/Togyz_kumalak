@@ -1,19 +1,19 @@
 <template>
     <div class="board">
-        <div v-for="(column, index) in userColumn" :key="index">
+        <div v-for="(column, index) in opponentColumn" :key="index">
             <label>{{column}}</label>
-            <div class="section" @click="userMove(index)">
-                <div v-if="column == -1" class="tozdyk"></div>
-                <div v-else v-for="item in column" :key="item" class="kumalak">
+            <div class="section" @click="opponentMove(index)">
+                <div v-for="item in column" :key="item" class="kumalak">
                 </div>
             </div>
             <div class="line"></div>
             <label v-if="index >= 9">{{section}}</label>
         </div>
-        <div v-for="(column, index) in opponentColumn" :key="index">
+        <div v-for="(column, index) in userColumn" :key="index">
             <label>{{column}}</label>
-            <div class="section">
-                <div v-for="item in column" :key="item" class="kumalak">
+            <div class="section" @click="userMove(index)">
+                <div v-if="column == -1" class="tozdyk"></div>
+                <div v-else v-for="item in column" :key="item" class="kumalak">
                 </div>
             </div>
             <div class="line"></div>
@@ -37,59 +37,65 @@ const getGame =async () => {
     })
     apiClient.get('/game/get/' + route.params.id)
     .then(res => {
-        userColumn.value = [];
-        userColumn.value.push(res.data.user_column.first_column)
-        userColumn.value.push(res.data.user_column.second_column)
-        userColumn.value.push(res.data.user_column.three_column)
-        userColumn.value.push(res.data.user_column.four_column)
-        userColumn.value.push(res.data.user_column.five_column)
-        userColumn.value.push(res.data.user_column.six_column)
-        userColumn.value.push(res.data.user_column.seven_column)
-        userColumn.value.push(res.data.user_column.eight_column)
-        userColumn.value.push(res.data.user_column.nine_column)
-
-        opponentColumn.value = []
-        opponentColumn.value.push(res.data.opponent_column.first_column)
-        opponentColumn.value.push(res.data.opponent_column.second_column)
-        opponentColumn.value.push(res.data.opponent_column.three_column)
-        opponentColumn.value.push(res.data.opponent_column.four_column)
-        opponentColumn.value.push(res.data.opponent_column.five_column)
-        opponentColumn.value.push(res.data.opponent_column.six_column)
-        opponentColumn.value.push(res.data.opponent_column.seven_column)
-        opponentColumn.value.push(res.data.opponent_column.eight_column)
-        opponentColumn.value.push(res.data.opponent_column.nine_column)
+        setGameData(res)
     })
 }
 
 const userMove =async (index: number) => {
-    const apiClient = axios.create({
-        baseURL: 'http://localhost:8000/api',
-        headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
-    })
-    apiClient.post('/game/usermove/' + route.params.id, { 'column' : index + 1})
-    .then(res => {
-        userColumn.value = [];
-        userColumn.value.push(res.data.user_column.first_column)
-        userColumn.value.push(res.data.user_column.second_column)
-        userColumn.value.push(res.data.user_column.three_column)
-        userColumn.value.push(res.data.user_column.four_column)
-        userColumn.value.push(res.data.user_column.five_column)
-        userColumn.value.push(res.data.user_column.six_column)
-        userColumn.value.push(res.data.user_column.seven_column)
-        userColumn.value.push(res.data.user_column.eight_column)
-        userColumn.value.push(res.data.user_column.nine_column)
+    if(move.value === 0) {
+        const apiClient = axios.create({
+            baseURL: 'http://localhost:8000/api',
+            headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
+        })
+        apiClient.post('/game/usermove/' + route.params.id, { 'column' : index + 1})
+        .then(res => {
+            setGameData(res)
+        })
+    }
+    else {
+        alert('Не ваш ход!')
+    }
+}
 
-        opponentColumn.value = []
-        opponentColumn.value.push(res.data.opponent_column.first_column)
-        opponentColumn.value.push(res.data.opponent_column.second_column)
-        opponentColumn.value.push(res.data.opponent_column.three_column)
-        opponentColumn.value.push(res.data.opponent_column.four_column)
-        opponentColumn.value.push(res.data.opponent_column.five_column)
-        opponentColumn.value.push(res.data.opponent_column.six_column)
-        opponentColumn.value.push(res.data.opponent_column.seven_column)
-        opponentColumn.value.push(res.data.opponent_column.eight_column)
-        opponentColumn.value.push(res.data.opponent_column.nine_column)
-    })
+const opponentMove =async (index: number) => {
+    if(move.value === 1) {
+        const apiClient = axios.create({
+            baseURL: 'http://localhost:8000/api',
+            headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
+        })
+        apiClient.post('/game/opponentmove/' + route.params.id, { 'column' : index + 1})
+        .then(res => {
+            setGameData(res)
+        })
+    }
+    else {
+        alert('Не ваш ход!')
+    }
+}
+
+const setGameData = (res) => {
+    move.value = res.data.move;
+    userColumn.value = [];
+    userColumn.value.push(res.data.user_column.first_column)
+    userColumn.value.push(res.data.user_column.second_column)
+    userColumn.value.push(res.data.user_column.three_column)
+    userColumn.value.push(res.data.user_column.four_column)
+    userColumn.value.push(res.data.user_column.five_column)
+    userColumn.value.push(res.data.user_column.six_column)
+    userColumn.value.push(res.data.user_column.seven_column)
+    userColumn.value.push(res.data.user_column.eight_column)
+    userColumn.value.push(res.data.user_column.nine_column)
+
+    opponentColumn.value = []
+    opponentColumn.value.push(res.data.opponent_column.first_column)
+    opponentColumn.value.push(res.data.opponent_column.second_column)
+    opponentColumn.value.push(res.data.opponent_column.three_column)
+    opponentColumn.value.push(res.data.opponent_column.four_column)
+    opponentColumn.value.push(res.data.opponent_column.five_column)
+    opponentColumn.value.push(res.data.opponent_column.six_column)
+    opponentColumn.value.push(res.data.opponent_column.seven_column)
+    opponentColumn.value.push(res.data.opponent_column.eight_column)
+    opponentColumn.value.push(res.data.opponent_column.nine_column)
 }
 
 const showLine = () => {
@@ -112,6 +118,7 @@ onMounted(getGame)
 
 const userColumn = ref([9, 9, 9, 9, 9, 9, 9, 9, 9])
 const opponentColumn = ref([9, 9, 9, 9, 9, 9, 9, 9, 9])
+const move = ref(0)
 
 </script>
 
