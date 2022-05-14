@@ -127,6 +127,7 @@ class MoveController extends Controller
 
         //logic of another user columns
         for ($i= $request->column + 1; $i < $user_columns_count_end; $i++) {
+            $sphere_number--;
             if($i == 1){
                 $user_data['first_column'] = $user_column->first_column + 1;
                 if($opponent_tuzdyk_id == 1){
@@ -204,6 +205,7 @@ class MoveController extends Controller
         if($opponent_columns_count != 0){
 
             for ($i= 1; $i < $opponent_columns_count + 1; $i++) {
+                $sphere_number--;
                 if($i == 1){
                     $opponent_data['first_column'] = $opponent_column->first_column + 1;
                     if($i == $opponent_columns_count){
@@ -213,6 +215,9 @@ class MoveController extends Controller
                         }else if($opponent_data['first_column'] % 2 == 0){
                             $user_data['kazan'] = $opponent_data['first_column'] + $user_data['kazan'];
                             $opponent_data['first_column'] = 0;
+                        }else if($opponent_data['first_column'] == 3 && $i != $opponent_tuzdyk_id){
+                            $user_data['kazan'] = $opponent_data['first_column'] + $user_data['kazan'];
+                            $opponent_data['first_column'] = -1;
                         }
 
 
@@ -228,6 +233,9 @@ class MoveController extends Controller
                         }else if($opponent_data['second_column'] % 2 == 0){
                             $user_data['kazan'] = $opponent_data['second_column']+ $user_data['kazan'];
                             $opponent_data['second_column'] = 0;
+                        }else if($opponent_data['second_column'] == 3 && $i != $opponent_tuzdyk_id){
+                            $user_data['kazan'] = $opponent_data['second_column'] + $user_data['kazan'];
+                            $opponent_data['second_column'] = -1;
                         }
                     }
                 }
@@ -241,6 +249,9 @@ class MoveController extends Controller
                         }else if($opponent_data['three_column'] % 2 == 0){
                             $user_data['kazan'] = $opponent_data['three_column']+ $user_data['kazan'];
                             $opponent_data['three_column'] = 0;
+                        }else if($opponent_data['three_column'] == 3 && $i != $opponent_tuzdyk_id){
+                            $user_data['kazan'] = $opponent_data['three_column'] + $user_data['kazan'];
+                            $opponent_data['three_column'] = -1;
                         }
                     }
                 }
@@ -254,6 +265,9 @@ class MoveController extends Controller
                         }else if($opponent_data['four_column'] % 2 == 0){
                             $user_data['kazan'] = $opponent_data['four_column']+ $user_data['kazan'];
                             $opponent_data['four_column'] = 0;
+                        }else if($opponent_data['four_column'] == 3 && $i != $opponent_tuzdyk_id){
+                            $user_data['kazan'] = $opponent_data['four_column'] + $user_data['kazan'];
+                            $opponent_data['four_column'] = -1;
                         }
                     }
                 }
@@ -267,6 +281,9 @@ class MoveController extends Controller
                         }else if($opponent_data['five_column'] % 2 == 0){
                             $user_data['kazan'] = $opponent_data['five_column']+ $user_data['kazan'];
                             $opponent_data['five_column'] = 0;
+                        }else if($opponent_data['five_column'] == 3){
+                            $user_data['kazan'] = $opponent_data['five_column'] + $user_data['kazan'];
+                            $opponent_data['five_column'] = -1;
                         }
                     }
                 }
@@ -280,6 +297,9 @@ class MoveController extends Controller
                         }else if($opponent_data['six_column'] % 2 == 0){
                             $user_data['kazan'] = $opponent_data['six_column']+ $user_data['kazan'];
                             $opponent_data['six_column'] = 0;
+                        }else if($opponent_data['six_column'] == 3 && $i != $opponent_tuzdyk_id){
+                            $user_data['kazan'] = $opponent_data['six_column'] + $user_data['kazan'];
+                            $opponent_data['six_column'] = -1;
                         }
                     }
                 }
@@ -293,6 +313,9 @@ class MoveController extends Controller
                         }else if($opponent_data['seven_column'] % 2 == 0){
                             $user_data['kazan'] = $opponent_data['seven_column']+ $user_data['kazan'];
                             $opponent_data['seven_column'] = 0;
+                        }else if($opponent_data['seven_column'] == 3 && $i != $opponent_tuzdyk_id){
+                            $user_data['kazan'] = $opponent_data['seven_column'] + $user_data['kazan'];
+                            $opponent_data['seven_column'] = -1;
                         }
                     }
                 }
@@ -306,6 +329,9 @@ class MoveController extends Controller
                         }else if($opponent_data['eight_column'] % 2 == 0){
                             $user_data['kazan'] = $opponent_data['eight_column']+ $user_data['kazan'];
                             $opponent_data['eight_column'] = 0;
+                        }else if($opponent_data['eight_column'] == 3 && $i != $opponent_tuzdyk_id){
+                            $user_data['kazan'] = $opponent_data['eight_column'] + $user_data['kazan'];
+                            $opponent_data['eight_column'] = -1;
                         }
                     }
                 }
@@ -327,6 +353,85 @@ class MoveController extends Controller
 
             $opponent_column->update($opponent_data);
         }
+
+        // заход на свою половину если остались шарики
+        if($sphere_number != 0){
+            for ($i= 1; $i < $sphere_number + 1; $i++) {
+                if($i == 1){
+                    $user_data['first_column'] = $user_column->first_column + 1;
+                    if($opponent_tuzdyk_id == 1){
+                        $opponent_data['kazan'] = $user_data['first_column'];
+                        $user_data['first_column'] = 0;
+                    }
+                }
+                
+                else if($i == 2){
+                    $user_data['second_column'] = $user_column->second_column + 1;
+                    if($opponent_tuzdyk_id == 2){
+                        $opponent_data['kazan'] = $user_data['second_column'];
+                        $user_data['second_column'] = 0;
+                    }
+                }
+                
+                else if($i == 3){
+                    $user_data['three_column'] = $user_column->three_column + 1;
+                    if($opponent_tuzdyk_id == 3){
+                        $opponent_data['kazan'] = $user_data['three_column'];
+                        $user_data['three_column'] = 0;
+                    }
+                }
+                
+                else if($i == 4){
+                    $user_data['four_column'] = $user_column->four_column + 1;
+                    if($opponent_tuzdyk_id == 4){
+                        $opponent_data['kazan'] = $user_data['four_column'];
+                        $user_data['four_column'] = 0;
+                    }
+                }
+                
+                else if($i == 5){
+                    $user_data['five_column'] = $user_column->five_column + 1;
+                    if($opponent_tuzdyk_id == 5){
+                        $opponent_data['kazan'] = $user_data['five_column'];
+                        $user_data['five_column'] = 0;
+                    }
+                }
+                
+                else if($i == 6){
+                    $user_data['six_column'] = $user_column->six_column + 1;
+                    if($opponent_tuzdyk_id == 6){
+                        $opponent_data['kazan'] = $user_data['six_column'];
+                        $user_data['six_column'] = 0;
+                    }
+                }
+                
+                else if($i == 7){
+                    $user_data['seven_column'] = $user_column->seven_column + 1;
+                    if($opponent_tuzdyk_id == 7){
+                        $opponent_data['kazan'] = $user_data['seven_column'];
+                        $user_data['seven_column'] = 0;
+                    }
+                }
+                
+                else if($i == 8){
+                    $user_data['eight_column'] = $user_column->eight_column + 1;
+                    if($opponent_tuzdyk_id == 8){
+                        $opponent_data['kazan'] = $user_data['eight_column'];
+                        $user_data['eight_column'] = 0;
+                    }
+                }
+                
+                else if($i == 9){
+                    $user_data['nine_column'] = $user_column->nine_column + 1;
+                    if($opponent_tuzdyk_id == 9){
+                        $opponent_data['kazan'] = $user_data['nine_column'];
+                        $user_data['nine_column'] = 0;
+                    }
+                }
+            }
+        }
+
+
         //update columns
         $user_column->update($user_data);
 
@@ -335,6 +440,102 @@ class MoveController extends Controller
         $game->update([
             "move" => 1
         ]);
+        $user_total = 0;
+        $opponent_total = 0;
+        //end of game
+        if($user_data['first_column'] == 0 && $user_data['second_column'] == 0 && $user_data['three_column'] == 0 && $user_data['four_column'] == 0 && $user_data['five_column'] == 0 && $user_data['six_column'] == 0 && $user_data['seven_column'] == 0 && $user_data['eight_column'] == 0 && $user_data['nine_column'] == 0){
+            $user_query = User::where('id', $game->user_id)->first();
+            $opponent_query = User::where('id', $game->opponent_id)->first();
+            //считаем сколько у юзера какашек
+            $user_total += $user_data['first_column']; 
+            $user_total += $user_data['second_column'];
+            $user_total += $user_data['three_column']; 
+            $user_total += $user_data['four_column'];  
+            $user_total += $user_data['five_column']; 
+            $user_total += $user_data['six_column']; 
+            $user_total += $user_data['seven_column']; 
+            $user_total += $user_data['eight_column']; 
+            $user_total += $user_data['nine_column'];
+            $user_total += $user_data['kazan'];
+            //считаем сколько у опоненте какашек
+            
+            $opponent_total += $opponent_data['first_column']; 
+            $opponent_total += $opponent_data['second_column'];
+            $opponent_total += $opponent_data['three_column']; 
+            $opponent_total += $opponent_data['four_column'];  
+            $opponent_total += $opponent_data['five_column']; 
+            $opponent_total += $opponent_data['six_column']; 
+            $opponent_total += $opponent_data['seven_column']; 
+            $opponent_total += $opponent_data['eight_column']; 
+            $opponent_total += $opponent_data['nine_column'];
+            $opponent_total += $opponent_data['kazan'];
+            //user win
+            if($user_total > $opponent_total){
+                $game->update(['game_status'=>'Игра завершилась']);
+                $user_query->update(['wins' => $user_query->wins + 1]);
+                if($opponent_query->loses != 0){
+                    $opponent_query->update(['loses' => $opponent_query->loses - 1]);
+                }
+                return response()->json(['game_status'=>'game end', 'winner'=> 'user'],200);
+
+            }else if($user_total < $opponent_total){
+                $game->update(['game_status'=>'Игра завершилась']);
+                $opponent_query->update(['wins' => $opponent_query->wins + 1]);
+                if($user_query->loses != 0){
+                    $user_query->update(['loses' => $user_query->loses - 1]);
+                }
+                return response()->json(['game_status'=>'game end', 'winner'=> 'opponent'],200);
+            }else if($user_total == $opponent_total){
+                $game->update(['game_status'=>'Игра завершилась']);
+                return response()->json(['game_status'=>'game end', 'winner'=> 'surrender'],200);
+            }
+        }else if($opponent_data['first_column'] == 0 && $opponent_data['second_column'] == 0 && $opponent_data['three_column'] == 0 && $opponent_data['four_column'] == 0 && $opponent_data['five_column'] == 0 && $opponent_data['six_column'] == 0 && $opponent_data['seven_column'] == 0 && $opponent_data['eight_column'] == 0 && $opponent_data['nine_column'] == 0){
+            $user_query = User::where('id', $game->user_id)->first();
+            $opponent_query = User::where('id', $game->opponent_id)->first();
+            //считаем сколько у юзера какашек
+            $user_total += $user_data['first_column']; 
+            $user_total += $user_data['second_column'];
+            $user_total += $user_data['three_column']; 
+            $user_total += $user_data['four_column'];  
+            $user_total += $user_data['five_column']; 
+            $user_total += $user_data['six_column']; 
+            $user_total += $user_data['seven_column']; 
+            $user_total += $user_data['eight_column']; 
+            $user_total += $user_data['nine_column'];
+            $user_total += $user_data['kazan'];
+            //считаем сколько у опоненте какашек
+            
+            $opponent_total += $opponent_data['first_column']; 
+            $opponent_total += $opponent_data['second_column'];
+            $opponent_total += $opponent_data['three_column']; 
+            $opponent_total += $opponent_data['four_column'];  
+            $opponent_total += $opponent_data['five_column']; 
+            $opponent_total += $opponent_data['six_column']; 
+            $opponent_total += $opponent_data['seven_column']; 
+            $opponent_total += $opponent_data['eight_column']; 
+            $opponent_total += $opponent_data['nine_column'];
+            $opponent_total += $opponent_data['kazan'];
+            //user win
+            if($user_total > $opponent_total){
+                $game->update(['game_status'=>'Игра завершилась']);
+                $user_query->update(['wins' => $user_query->wins + 1]);
+                if($opponent_query->loses != 0){
+                    $opponent_query->update(['loses' => $opponent_query->loses - 1]);
+                }
+                return response()->json(['game_status'=>'game end', 'winner'=> 'user'],200);
+
+            }else if($user_total < $opponent_total){
+                $game->update(['game_status'=>'Игра завершилась']);
+                $opponent_query->update(['wins' => $opponent_query->wins + 1]);
+                if($user_query->loses != 0){
+                    $user_query->update(['loses' => $user_query->loses - 1]);
+                }
+                return response()->json(['game_status'=>'game end', 'winner'=> 'opponent'],200);
+            }else if($user_total == $opponent_total){
+                $game->update(['game_status'=>'Игра завершилась']);
+                return response()->json(['game_status'=>'game end', 'winner'=> 'surrender'],200);
+            }
+        }
 
         return response()->json($game,200);
     }
