@@ -121,10 +121,17 @@ class MoveController extends Controller
             $sphere_number = $user_column->nine_column;
         }
         
+        $is_return = false;
+        $return_columns = 0;
         $user_columns_count_end = $request->column + $sphere_number;
         $opponent_columns_count = 0;
-        if($user_columns_count_end > 10){
+        $is_return = false;
+        $return_columns = 0;
+        if($user_columns_count_end > 10 && $user_columns_count_end < 19){
             $opponent_columns_count = $user_columns_count_end - 9;
+        }else if($user_columns_count_end > 19){
+            $is_return = true;
+            $return_columns = $opponent_columns_count - 9;
         }
 
         //logic of another user columns
@@ -356,13 +363,11 @@ class MoveController extends Controller
             }
 
             $opponent_column->update($opponent_data);
-        }else{
-            $sphere_number = 0;
         }
 
         // заход на свою половину если остались шарики
-        if($sphere_number != 0){
-            for ($i= 1; $i < $sphere_number + 1; $i++) {
+        if($is_return){
+            for ($i= 1; $i < $return_columns + 1; $i++) {
                 if($i == 1){
                     $user_data['first_column'] = $user_column->first_column + 1;
                     if($opponent_tuzdyk_id == 1){
@@ -659,8 +664,13 @@ class MoveController extends Controller
         
         $user_columns_count_end = $request->column + $sphere_number;
         $opponent_columns_count = 0;
-        if($user_columns_count_end > 10){
+        $is_return = false;
+        $return_columns = 0;
+        if($user_columns_count_end > 10 && $user_columns_count_end < 19){
             $opponent_columns_count = $user_columns_count_end - 9;
+        }else if($user_columns_count_end > 19){
+            $is_return = true;
+            $return_columns = $opponent_columns_count - 9;
         }
 
         //logic of another user columns
@@ -892,13 +902,11 @@ class MoveController extends Controller
             }
 
             $opponent_column->update($opponent_data);
-        }else{
-            $sphere_number = 0;
         }
 
         // заход на свою половину если остались шарики
-        if($sphere_number != 0){
-            for ($i= 1; $i < $sphere_number + 1; $i++) {
+        if($is_return){
+            for ($i= 1; $i < $return_columns + 1; $i++) {
                 if($i == 1){
                     $user_data['first_column'] = $user_column->first_column + 1;
                     if($opponent_tuzdyk_id == 1){
