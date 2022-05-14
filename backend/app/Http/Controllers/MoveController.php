@@ -890,6 +890,8 @@ class MoveController extends Controller
             }
 
             $opponent_column->update($opponent_data);
+        }else{
+            $sphere_number = 0;
         }
 
         // заход на свою половину если остались шарики
