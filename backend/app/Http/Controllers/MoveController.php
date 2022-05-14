@@ -127,10 +127,11 @@ class MoveController extends Controller
         $opponent_columns_count = 0;
         $is_return = false;
         $return_columns = 0;
-        if($user_columns_count_end > 10 && $user_columns_count_end < 19){
+        if($user_columns_count_end > 10 && $sphere_number < 19){
             $opponent_columns_count = $user_columns_count_end - 9;
-        }else if($user_columns_count_end > 19){
+        }else if($sphere_number > 19){
             $is_return = true;
+            $opponent_columns_count = 9;
             $return_columns = $opponent_columns_count - 9;
         }
 
@@ -666,10 +667,11 @@ class MoveController extends Controller
         $opponent_columns_count = 0;
         $is_return = false;
         $return_columns = 0;
-        if($user_columns_count_end > 10 && $user_columns_count_end < 19){
+        if($user_columns_count_end > 10 && $sphere_number < 19){
             $opponent_columns_count = $user_columns_count_end - 9;
-        }else if($user_columns_count_end > 19){
+        }else if($sphere_number > 19){
             $is_return = true;
+            $opponent_columns_count = 9;
             $return_columns = $opponent_columns_count - 9;
         }
 
