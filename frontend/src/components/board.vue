@@ -7,7 +7,7 @@
                 </div>
             </div>
             <div class="line"></div>
-            <label v-if="index >= 9">{{section}}</label>
+            <label>{{section}}  Оппонент{{index}}</label>
         </div>
         <div v-for="(column, index) in userColumn" :key="index">
             <label>{{column}}</label>
@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="line"></div>
-            <label v-if="index >= 9">{{section}}</label>
+            <label>{{section}}  Юзер {{index}}</label>
         </div>
     </div>
 </template>
@@ -75,27 +75,30 @@ const opponentMove =async (index: number) => {
 
 const setGameData = (res) => {
     move.value = res.data.move;
-    userColumn.value = [];
-    userColumn.value.push(res.data.user_column.first_column)
-    userColumn.value.push(res.data.user_column.second_column)
-    userColumn.value.push(res.data.user_column.three_column)
-    userColumn.value.push(res.data.user_column.four_column)
-    userColumn.value.push(res.data.user_column.five_column)
-    userColumn.value.push(res.data.user_column.six_column)
-    userColumn.value.push(res.data.user_column.seven_column)
-    userColumn.value.push(res.data.user_column.eight_column)
-    userColumn.value.push(res.data.user_column.nine_column)
 
-    opponentColumn.value = []
-    opponentColumn.value.push(res.data.opponent_column.first_column)
-    opponentColumn.value.push(res.data.opponent_column.second_column)
-    opponentColumn.value.push(res.data.opponent_column.three_column)
-    opponentColumn.value.push(res.data.opponent_column.four_column)
-    opponentColumn.value.push(res.data.opponent_column.five_column)
-    opponentColumn.value.push(res.data.opponent_column.six_column)
-    opponentColumn.value.push(res.data.opponent_column.seven_column)
-    opponentColumn.value.push(res.data.opponent_column.eight_column)
-    opponentColumn.value.push(res.data.opponent_column.nine_column)
+    let localUserColumn = [] 
+    localUserColumn.push(res.data.user_column.first_column)
+    localUserColumn.push(res.data.user_column.second_column)
+    localUserColumn.push(res.data.user_column.three_column)
+    localUserColumn.push(res.data.user_column.four_column)
+    localUserColumn.push(res.data.user_column.five_column)
+    localUserColumn.push(res.data.user_column.six_column)
+    localUserColumn.push(res.data.user_column.seven_column)
+    localUserColumn.push(res.data.user_column.eight_column)
+    localUserColumn.push(res.data.user_column.nine_column)
+    userColumn.value = localUserColumn;
+
+    let localOppCol = []
+    localOppCol.push(res.data.opponent_column.nine_column)
+    localOppCol.push(res.data.opponent_column.eight_column)
+    localOppCol.push(res.data.opponent_column.seven_column)
+    localOppCol.push(res.data.opponent_column.six_column)
+    localOppCol.push(res.data.opponent_column.five_column) 
+    localOppCol.push(res.data.opponent_column.four_column)  
+    localOppCol.push(res.data.opponent_column.three_column)
+    localOppCol.push(res.data.opponent_column.second_column)
+    localOppCol.push(res.data.opponent_column.first_column)
+    opponentColumn.value = localOppCol
 }
 
 const showLine = () => {
