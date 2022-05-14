@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-import main from '../pages/main.vue'
+const main = () => import('../pages/main.vue')
 const board = () => import('../components/board.vue')
 
 const routes = [
@@ -10,7 +10,7 @@ const routes = [
         component: main,
     },
     {
-        path: '/board/:game_code',
+        path: '/board/:id',
         name: 'board',
         component: board,
     },
@@ -18,7 +18,8 @@ const routes = [
 
 const router = createRouter({
     routes,
-    history: createWebHistory()
+    history: createWebHistory(),
+    linkExactActiveClass: "active" // active class for *exact* links.
 })
 
 export default router;

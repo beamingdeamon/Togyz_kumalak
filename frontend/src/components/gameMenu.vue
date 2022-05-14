@@ -23,6 +23,7 @@ const router = useRouter();
 const route = useRoute()
 
 const gameCode = ref('')
+const gameId = ref('')
 
 const createGame = async () => {
     const apiClient = axios.create({
@@ -32,6 +33,7 @@ const createGame = async () => {
     apiClient.post('/game/create')
     .then(res => {
         gameCode.value = res.data.game_code
+        gameId.value = res.data.id
     })
 }
 
@@ -39,7 +41,7 @@ const joinToGame = async () => {
     router.push({
         name: 'board',
         params: {
-            game_code: gameCode.value
+            id: gameId.value
         }
     })
 }

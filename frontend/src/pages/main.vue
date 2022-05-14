@@ -22,6 +22,7 @@ const showToken = () => {
   console.log('token: ',localStorage.getItem('token'))
 } 
 onMounted(() => { 
+  console.log('awdawdawdawd')
   showToken()
 })
 

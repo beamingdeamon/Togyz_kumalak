@@ -1,11 +1,11 @@
 <template>
-  <div>
-    <main />
-  </div>
+<div class="wrapper">
+  <router-link to='/'></router-link>
+  <router-view></router-view>
+</div>
 </template>
 
 <script lang="ts" setup>
-import main from './pages/main.vue'
 </script>
 
 <style>
