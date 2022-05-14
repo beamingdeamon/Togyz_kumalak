@@ -31,5 +31,5 @@ Route::group(['prefix' => 'game','as' => 'api.','namespace' => 'Api\Game','middl
     Route::get('/get/{id}', [GameController::class, 'getGameInfo']);
     Route::post('/connect/{game_code}', [GameController::class, 'connectToGame']);
     Route::post('/usermove/{game_id}', [MoveController::class, 'userMove']);
-
+    Route::post('/opponentmove/{game_id}', [MoveController::class, 'opponentMove']);
 });
