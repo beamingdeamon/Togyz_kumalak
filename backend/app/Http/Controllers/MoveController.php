@@ -32,8 +32,8 @@ class MoveController extends Controller
         $opponent_data;
         $opponent_data['kazan'] = $opponent_column->kazan;
         $sphere_number = 0;
-        $user_tuzdyk_id = null;
-        $opponent_tuzdyk_id = null;
+        $user_tuzdyk_id = 0;
+        $opponent_tuzdyk_id = 0;
         //пробегаюсь по всем колонкам of user
         if($user_column['first_column'] == -1){
             $user_tuzdyk_id = 1;
@@ -574,8 +574,8 @@ class MoveController extends Controller
         $opponent_data;
         $opponent_data['kazan'] = $opponent_column->kazan;
         $sphere_number = 0;
-        $user_tuzdyk_id = null;
-        $opponent_tuzdyk_id = null;
+        $user_tuzdyk_id = 0;
+        $opponent_tuzdyk_id = 0;
         //пробегаюсь по всем колонкам of user
         if($user_column['first_column'] == -1){
             $user_tuzdyk_id = 1;
