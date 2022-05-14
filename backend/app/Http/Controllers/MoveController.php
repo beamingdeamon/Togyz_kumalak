@@ -28,7 +28,9 @@ class MoveController extends Controller
 
         //some data
         $user_data;
+        $user_data['kazan'] = $user_column->kazan;
         $opponent_data;
+        $opponent_data['kazan'] = $opponent_column->kazan;
         $sphere_number = 0;
         $user_tuzdyk_id = null;
         $opponent_tuzdyk_id = null;
@@ -213,9 +215,11 @@ class MoveController extends Controller
                             $user_data['kazan'] = $opponent_data['first_column'] + $user_data['kazan'];
                             $opponent_data['first_column'] = 0;
                         }else if($opponent_data['first_column'] % 2 == 0){
+
                             $user_data['kazan'] = $opponent_data['first_column'] + $user_data['kazan'];
                             $opponent_data['first_column'] = 0;
                         }else if($opponent_data['first_column'] == 3 && $i != $opponent_tuzdyk_id){
+
                             $user_data['kazan'] = $opponent_data['first_column'] + $user_data['kazan'];
                             $opponent_data['first_column'] = -1;
                         }
@@ -311,7 +315,7 @@ class MoveController extends Controller
                             $user_data['kazan'] = $opponent_data['seven_column'] + $user_data['kazan'];
                             $opponent_data['seven_column'] = 0;
                         }else if($opponent_data['seven_column'] % 2 == 0){
-                            $user_data['kazan'] = $opponent_data['seven_column']+ $user_data['kazan'];
+                            $user_data['kazan'] = $opponent_data['seven_column'] + $user_data['kazan'];
                             $opponent_data['seven_column'] = 0;
                         }else if($opponent_data['seven_column'] == 3 && $i != $opponent_tuzdyk_id){
                             $user_data['kazan'] = $opponent_data['seven_column'] + $user_data['kazan'];
@@ -443,32 +447,32 @@ class MoveController extends Controller
         $user_total = 0;
         $opponent_total = 0;
         //end of game
-        if($user_data['first_column'] == 0 && $user_data['second_column'] == 0 && $user_data['three_column'] == 0 && $user_data['four_column'] == 0 && $user_data['five_column'] == 0 && $user_data['six_column'] == 0 && $user_data['seven_column'] == 0 && $user_data['eight_column'] == 0 && $user_data['nine_column'] == 0){
+        if($user_column['first_column'] == 0 && $user_column['second_column'] == 0 && $user_column['three_column'] == 0 && $user_column['four_column'] == 0 && $user_column['five_column'] == 0 && $user_column['six_column'] == 0 && $user_column['seven_column'] == 0 && $user_column['eight_column'] == 0 && $user_column['nine_column'] == 0){
             $user_query = User::where('id', $game->user_id)->first();
             $opponent_query = User::where('id', $game->opponent_id)->first();
             //считаем сколько у юзера какашек
-            $user_total += $user_data['first_column']; 
-            $user_total += $user_data['second_column'];
-            $user_total += $user_data['three_column']; 
-            $user_total += $user_data['four_column'];  
-            $user_total += $user_data['five_column']; 
-            $user_total += $user_data['six_column']; 
-            $user_total += $user_data['seven_column']; 
-            $user_total += $user_data['eight_column']; 
-            $user_total += $user_data['nine_column'];
-            $user_total += $user_data['kazan'];
+            $user_total += $user_column['first_column']; 
+            $user_total += $user_column['second_column'];
+            $user_total += $user_column['three_column']; 
+            $user_total += $user_column['four_column'];  
+            $user_total += $user_column['five_column']; 
+            $user_total += $user_column['six_column']; 
+            $user_total += $user_column['seven_column']; 
+            $user_total += $user_column['eight_column']; 
+            $user_total += $user_column['nine_column'];
+            $user_total += $user_column['kazan'];
             //считаем сколько у опоненте какашек
             
-            $opponent_total += $opponent_data['first_column']; 
-            $opponent_total += $opponent_data['second_column'];
-            $opponent_total += $opponent_data['three_column']; 
-            $opponent_total += $opponent_data['four_column'];  
-            $opponent_total += $opponent_data['five_column']; 
-            $opponent_total += $opponent_data['six_column']; 
-            $opponent_total += $opponent_data['seven_column']; 
-            $opponent_total += $opponent_data['eight_column']; 
-            $opponent_total += $opponent_data['nine_column'];
-            $opponent_total += $opponent_data['kazan'];
+            $opponent_total += $opponent_column['first_column']; 
+            $opponent_total += $opponent_column['second_column'];
+            $opponent_total += $opponent_column['three_column']; 
+            $opponent_total += $opponent_column['four_column'];  
+            $opponent_total += $opponent_column['five_column']; 
+            $opponent_total += $opponent_column['six_column']; 
+            $opponent_total += $opponent_column['seven_column']; 
+            $opponent_total += $opponent_column['eight_column']; 
+            $opponent_total += $opponent_column['nine_column'];
+            $opponent_total += $opponent_column['kazan'];
             //user win
             if($user_total > $opponent_total){
                 $game->update(['game_status'=>'Игра завершилась']);
@@ -489,32 +493,32 @@ class MoveController extends Controller
                 $game->update(['game_status'=>'Игра завершилась']);
                 return response()->json(['game_status'=>'game end', 'winner'=> 'surrender'],200);
             }
-        }else if($opponent_data['first_column'] == 0 && $opponent_data['second_column'] == 0 && $opponent_data['three_column'] == 0 && $opponent_data['four_column'] == 0 && $opponent_data['five_column'] == 0 && $opponent_data['six_column'] == 0 && $opponent_data['seven_column'] == 0 && $opponent_data['eight_column'] == 0 && $opponent_data['nine_column'] == 0){
+        }else if($opponent_column['first_column'] == 0 && $opponent_column['second_column'] == 0 && $opponent_column['three_column'] == 0 && $opponent_column['four_column'] == 0 && $opponent_column['five_column'] == 0 && $opponent_column['six_column'] == 0 && $opponent_column['seven_column'] == 0 && $opponent_column['eight_column'] == 0 && $opponent_column['nine_column'] == 0){
             $user_query = User::where('id', $game->user_id)->first();
             $opponent_query = User::where('id', $game->opponent_id)->first();
             //считаем сколько у юзера какашек
-            $user_total += $user_data['first_column']; 
-            $user_total += $user_data['second_column'];
-            $user_total += $user_data['three_column']; 
-            $user_total += $user_data['four_column'];  
-            $user_total += $user_data['five_column']; 
-            $user_total += $user_data['six_column']; 
-            $user_total += $user_data['seven_column']; 
-            $user_total += $user_data['eight_column']; 
-            $user_total += $user_data['nine_column'];
-            $user_total += $user_data['kazan'];
+            $user_total += $user_column['first_column']; 
+            $user_total += $user_column['second_column'];
+            $user_total += $user_column['three_column']; 
+            $user_total += $user_column['four_column'];  
+            $user_total += $user_column['five_column']; 
+            $user_total += $user_column['six_column']; 
+            $user_total += $user_column['seven_column']; 
+            $user_total += $user_column['eight_column']; 
+            $user_total += $user_column['nine_column'];
+            $user_total += $user_column['kazan'];
             //считаем сколько у опоненте какашек
             
-            $opponent_total += $opponent_data['first_column']; 
-            $opponent_total += $opponent_data['second_column'];
-            $opponent_total += $opponent_data['three_column']; 
-            $opponent_total += $opponent_data['four_column'];  
-            $opponent_total += $opponent_data['five_column']; 
-            $opponent_total += $opponent_data['six_column']; 
-            $opponent_total += $opponent_data['seven_column']; 
-            $opponent_total += $opponent_data['eight_column']; 
-            $opponent_total += $opponent_data['nine_column'];
-            $opponent_total += $opponent_data['kazan'];
+            $opponent_total += $opponent_column['first_column']; 
+            $opponent_total += $opponent_column['second_column'];
+            $opponent_total += $opponent_column['three_column']; 
+            $opponent_total += $opponent_column['four_column'];  
+            $opponent_total += $opponent_column['five_column']; 
+            $opponent_total += $opponent_column['six_column']; 
+            $opponent_total += $opponent_column['seven_column']; 
+            $opponent_total += $opponent_column['eight_column']; 
+            $opponent_total += $opponent_column['nine_column'];
+            $opponent_total += $opponent_column['kazan'];
             //user win
             if($user_total > $opponent_total){
                 $game->update(['game_status'=>'Игра завершилась']);
@@ -536,8 +540,8 @@ class MoveController extends Controller
                 return response()->json(['game_status'=>'game end', 'winner'=> 'surrender'],200);
             }
         }
-
-        return response()->json($game,200);
+        $updated_game = Game::where('id', $game->id)->with('user', 'opponent','user_column', 'opponent_column')->first();
+        return response()->json($updated_game,200);
     }    
     
     
@@ -558,7 +562,9 @@ class MoveController extends Controller
 
         //some data
         $user_data;
+        $user_data['kazan'] = $user_column->kazan;
         $opponent_data;
+        $opponent_data['kazan'] = $opponent_column->kazan;
         $sphere_number = 0;
         $user_tuzdyk_id = null;
         $opponent_tuzdyk_id = null;
@@ -743,9 +749,11 @@ class MoveController extends Controller
                             $user_data['kazan'] = $opponent_data['first_column'] + $user_data['kazan'];
                             $opponent_data['first_column'] = 0;
                         }else if($opponent_data['first_column'] % 2 == 0){
+
                             $user_data['kazan'] = $opponent_data['first_column'] + $user_data['kazan'];
                             $opponent_data['first_column'] = 0;
                         }else if($opponent_data['first_column'] == 3 && $i != $opponent_tuzdyk_id){
+
                             $user_data['kazan'] = $opponent_data['first_column'] + $user_data['kazan'];
                             $opponent_data['first_column'] = -1;
                         }
@@ -841,7 +849,7 @@ class MoveController extends Controller
                             $user_data['kazan'] = $opponent_data['seven_column'] + $user_data['kazan'];
                             $opponent_data['seven_column'] = 0;
                         }else if($opponent_data['seven_column'] % 2 == 0){
-                            $user_data['kazan'] = $opponent_data['seven_column']+ $user_data['kazan'];
+                            $user_data['kazan'] = $opponent_data['seven_column'] + $user_data['kazan'];
                             $opponent_data['seven_column'] = 0;
                         }else if($opponent_data['seven_column'] == 3 && $i != $opponent_tuzdyk_id){
                             $user_data['kazan'] = $opponent_data['seven_column'] + $user_data['kazan'];
@@ -968,37 +976,37 @@ class MoveController extends Controller
 
         //updating move choice
         $game->update([
-            "move" => 1
+            "move" => 0
         ]);
         $user_total = 0;
         $opponent_total = 0;
         //end of game
-        if($user_data['first_column'] == 0 && $user_data['second_column'] == 0 && $user_data['three_column'] == 0 && $user_data['four_column'] == 0 && $user_data['five_column'] == 0 && $user_data['six_column'] == 0 && $user_data['seven_column'] == 0 && $user_data['eight_column'] == 0 && $user_data['nine_column'] == 0){
+        if($user_column['first_column'] == 0 && $user_column['second_column'] == 0 && $user_column['three_column'] == 0 && $user_column['four_column'] == 0 && $user_column['five_column'] == 0 && $user_column['six_column'] == 0 && $user_column['seven_column'] == 0 && $user_column['eight_column'] == 0 && $user_column['nine_column'] == 0){
             $user_query = User::where('id', $game->user_id)->first();
             $opponent_query = User::where('id', $game->opponent_id)->first();
             //считаем сколько у юзера какашек
-            $user_total += $user_data['first_column']; 
-            $user_total += $user_data['second_column'];
-            $user_total += $user_data['three_column']; 
-            $user_total += $user_data['four_column'];  
-            $user_total += $user_data['five_column']; 
-            $user_total += $user_data['six_column']; 
-            $user_total += $user_data['seven_column']; 
-            $user_total += $user_data['eight_column']; 
-            $user_total += $user_data['nine_column'];
-            $user_total += $user_data['kazan'];
+            $user_total += $user_column['first_column']; 
+            $user_total += $user_column['second_column'];
+            $user_total += $user_column['three_column']; 
+            $user_total += $user_column['four_column'];  
+            $user_total += $user_column['five_column']; 
+            $user_total += $user_column['six_column']; 
+            $user_total += $user_column['seven_column']; 
+            $user_total += $user_column['eight_column']; 
+            $user_total += $user_column['nine_column'];
+            $user_total += $user_column['kazan'];
             //считаем сколько у опоненте какашек
             
-            $opponent_total += $opponent_data['first_column']; 
-            $opponent_total += $opponent_data['second_column'];
-            $opponent_total += $opponent_data['three_column']; 
-            $opponent_total += $opponent_data['four_column'];  
-            $opponent_total += $opponent_data['five_column']; 
-            $opponent_total += $opponent_data['six_column']; 
-            $opponent_total += $opponent_data['seven_column']; 
-            $opponent_total += $opponent_data['eight_column']; 
-            $opponent_total += $opponent_data['nine_column'];
-            $opponent_total += $opponent_data['kazan'];
+            $opponent_total += $opponent_column['first_column']; 
+            $opponent_total += $opponent_column['second_column'];
+            $opponent_total += $opponent_column['three_column']; 
+            $opponent_total += $opponent_column['four_column'];  
+            $opponent_total += $opponent_column['five_column']; 
+            $opponent_total += $opponent_column['six_column']; 
+            $opponent_total += $opponent_column['seven_column']; 
+            $opponent_total += $opponent_column['eight_column']; 
+            $opponent_total += $opponent_column['nine_column'];
+            $opponent_total += $opponent_column['kazan'];
             //user win
             if($user_total > $opponent_total){
                 $game->update(['game_status'=>'Игра завершилась']);
@@ -1019,32 +1027,32 @@ class MoveController extends Controller
                 $game->update(['game_status'=>'Игра завершилась']);
                 return response()->json(['game_status'=>'game end', 'winner'=> 'surrender'],200);
             }
-        }else if($opponent_data['first_column'] == 0 && $opponent_data['second_column'] == 0 && $opponent_data['three_column'] == 0 && $opponent_data['four_column'] == 0 && $opponent_data['five_column'] == 0 && $opponent_data['six_column'] == 0 && $opponent_data['seven_column'] == 0 && $opponent_data['eight_column'] == 0 && $opponent_data['nine_column'] == 0){
+        }else if($opponent_column['first_column'] == 0 && $opponent_column['second_column'] == 0 && $opponent_column['three_column'] == 0 && $opponent_column['four_column'] == 0 && $opponent_column['five_column'] == 0 && $opponent_column['six_column'] == 0 && $opponent_column['seven_column'] == 0 && $opponent_column['eight_column'] == 0 && $opponent_column['nine_column'] == 0){
             $user_query = User::where('id', $game->user_id)->first();
             $opponent_query = User::where('id', $game->opponent_id)->first();
             //считаем сколько у юзера какашек
-            $user_total += $user_data['first_column']; 
-            $user_total += $user_data['second_column'];
-            $user_total += $user_data['three_column']; 
-            $user_total += $user_data['four_column'];  
-            $user_total += $user_data['five_column']; 
-            $user_total += $user_data['six_column']; 
-            $user_total += $user_data['seven_column']; 
-            $user_total += $user_data['eight_column']; 
-            $user_total += $user_data['nine_column'];
-            $user_total += $user_data['kazan'];
+            $user_total += $user_column['first_column']; 
+            $user_total += $user_column['second_column'];
+            $user_total += $user_column['three_column']; 
+            $user_total += $user_column['four_column'];  
+            $user_total += $user_column['five_column']; 
+            $user_total += $user_column['six_column']; 
+            $user_total += $user_column['seven_column']; 
+            $user_total += $user_column['eight_column']; 
+            $user_total += $user_column['nine_column'];
+            $user_total += $user_column['kazan'];
             //считаем сколько у опоненте какашек
             
-            $opponent_total += $opponent_data['first_column']; 
-            $opponent_total += $opponent_data['second_column'];
-            $opponent_total += $opponent_data['three_column']; 
-            $opponent_total += $opponent_data['four_column'];  
-            $opponent_total += $opponent_data['five_column']; 
-            $opponent_total += $opponent_data['six_column']; 
-            $opponent_total += $opponent_data['seven_column']; 
-            $opponent_total += $opponent_data['eight_column']; 
-            $opponent_total += $opponent_data['nine_column'];
-            $opponent_total += $opponent_data['kazan'];
+            $opponent_total += $opponent_column['first_column']; 
+            $opponent_total += $opponent_column['second_column'];
+            $opponent_total += $opponent_column['three_column']; 
+            $opponent_total += $opponent_column['four_column'];  
+            $opponent_total += $opponent_column['five_column']; 
+            $opponent_total += $opponent_column['six_column']; 
+            $opponent_total += $opponent_column['seven_column']; 
+            $opponent_total += $opponent_column['eight_column']; 
+            $opponent_total += $opponent_column['nine_column'];
+            $opponent_total += $opponent_column['kazan'];
             //user win
             if($user_total > $opponent_total){
                 $game->update(['game_status'=>'Игра завершилась']);
@@ -1067,6 +1075,7 @@ class MoveController extends Controller
             }
         }
 
-        return response()->json($game,200);
+        $updated_game = Game::where('id', $game->id)->with('user', 'opponent','user_column', 'opponent_column')->first();
+        return response()->json($updated_game,200);
     }
 }
