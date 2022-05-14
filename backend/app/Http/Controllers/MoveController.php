@@ -370,7 +370,7 @@ class MoveController extends Controller
         if($is_return){
             for ($i= 1; $i < $return_columns + 1; $i++) {
                 if($i == 1){
-                    $user_data['first_column'] = $user_column->first_column + 1;
+                    $user_data['first_column']++;
                     if($opponent_tuzdyk_id == 1){
                         $opponent_data['kazan'] = $user_data['first_column'];
                         $user_data['first_column'] = 0;
@@ -378,7 +378,7 @@ class MoveController extends Controller
                 }
                 
                 else if($i == 2){
-                    $user_data['second_column'] = $user_column->second_column + 1;
+                    $user_data['second_column']++;
                     if($opponent_tuzdyk_id == 2){
                         $opponent_data['kazan'] = $user_data['second_column'];
                         $user_data['second_column'] = 0;
@@ -386,7 +386,7 @@ class MoveController extends Controller
                 }
                 
                 else if($i == 3){
-                    $user_data['three_column'] = $user_column->three_column + 1;
+                    $user_data['three_column']++;
                     if($opponent_tuzdyk_id == 3){
                         $opponent_data['kazan'] = $user_data['three_column'];
                         $user_data['three_column'] = 0;
@@ -394,7 +394,7 @@ class MoveController extends Controller
                 }
                 
                 else if($i == 4){
-                    $user_data['four_column'] = $user_column->four_column + 1;
+                    $user_data['four_column']++;
                     if($opponent_tuzdyk_id == 4){
                         $opponent_data['kazan'] = $user_data['four_column'];
                         $user_data['four_column'] = 0;
@@ -402,7 +402,7 @@ class MoveController extends Controller
                 }
                 
                 else if($i == 5){
-                    $user_data['five_column'] = $user_column->five_column + 1;
+                    $user_data['five_column']++;
                     if($opponent_tuzdyk_id == 5){
                         $opponent_data['kazan'] = $user_data['five_column'];
                         $user_data['five_column'] = 0;
@@ -410,7 +410,7 @@ class MoveController extends Controller
                 }
                 
                 else if($i == 6){
-                    $user_data['six_column'] = $user_column->six_column + 1;
+                    $user_data['six_column']++;
                     if($opponent_tuzdyk_id == 6){
                         $opponent_data['kazan'] = $user_data['six_column'];
                         $user_data['six_column'] = 0;
@@ -418,7 +418,7 @@ class MoveController extends Controller
                 }
                 
                 else if($i == 7){
-                    $user_data['seven_column'] = $user_column->seven_column + 1;
+                    $user_data['seven_column']++;
                     if($opponent_tuzdyk_id == 7){
                         $opponent_data['kazan'] = $user_data['seven_column'];
                         $user_data['seven_column'] = 0;
@@ -426,7 +426,7 @@ class MoveController extends Controller
                 }
                 
                 else if($i == 8){
-                    $user_data['eight_column'] = $user_column->eight_column + 1;
+                    $user_data['eight_column']++;
                     if($opponent_tuzdyk_id == 8){
                         $opponent_data['kazan'] = $user_data['eight_column'];
                         $user_data['eight_column'] = 0;
@@ -434,7 +434,7 @@ class MoveController extends Controller
                 }
                 
                 else if($i == 9){
-                    $user_data['nine_column'] = $user_column->nine_column + 1;
+                    $user_data['nine_column']++;
                     if($opponent_tuzdyk_id == 9){
                         $opponent_data['kazan'] = $user_data['nine_column'];
                         $user_data['nine_column'] = 0;
@@ -910,7 +910,7 @@ class MoveController extends Controller
         if($is_return){
             for ($i= 1; $i < $return_columns + 1; $i++) {
                 if($i == 1){
-                    $user_data['first_column'] = $user_column->first_column + 1;
+                    $user_data['first_column']++;
                     if($opponent_tuzdyk_id == 1){
                         $opponent_data['kazan'] = $user_data['first_column'];
                         $user_data['first_column'] = 0;
@@ -918,7 +918,7 @@ class MoveController extends Controller
                 }
                 
                 else if($i == 2){
-                    $user_data['second_column'] = $user_column->second_column + 1;
+                    $user_data['second_column']++;
                     if($opponent_tuzdyk_id == 2){
                         $opponent_data['kazan'] = $user_data['second_column'];
                         $user_data['second_column'] = 0;
@@ -926,7 +926,7 @@ class MoveController extends Controller
                 }
                 
                 else if($i == 3){
-                    $user_data['three_column'] = $user_column->three_column + 1;
+                    $user_data['three_column']++;
                     if($opponent_tuzdyk_id == 3){
                         $opponent_data['kazan'] = $user_data['three_column'];
                         $user_data['three_column'] = 0;
@@ -934,7 +934,7 @@ class MoveController extends Controller
                 }
                 
                 else if($i == 4){
-                    $user_data['four_column'] = $user_column->four_column + 1;
+                    $user_data['four_column']++;
                     if($opponent_tuzdyk_id == 4){
                         $opponent_data['kazan'] = $user_data['four_column'];
                         $user_data['four_column'] = 0;
@@ -942,7 +942,7 @@ class MoveController extends Controller
                 }
                 
                 else if($i == 5){
-                    $user_data['five_column'] = $user_column->five_column + 1;
+                    $user_data['five_column']++;
                     if($opponent_tuzdyk_id == 5){
                         $opponent_data['kazan'] = $user_data['five_column'];
                         $user_data['five_column'] = 0;
@@ -950,7 +950,7 @@ class MoveController extends Controller
                 }
                 
                 else if($i == 6){
-                    $user_data['six_column'] = $user_column->six_column + 1;
+                    $user_data['six_column']++;
                     if($opponent_tuzdyk_id == 6){
                         $opponent_data['kazan'] = $user_data['six_column'];
                         $user_data['six_column'] = 0;
@@ -958,7 +958,7 @@ class MoveController extends Controller
                 }
                 
                 else if($i == 7){
-                    $user_data['seven_column'] = $user_column->seven_column + 1;
+                    $user_data['seven_column']++;
                     if($opponent_tuzdyk_id == 7){
                         $opponent_data['kazan'] = $user_data['seven_column'];
                         $user_data['seven_column'] = 0;
@@ -966,7 +966,7 @@ class MoveController extends Controller
                 }
                 
                 else if($i == 8){
-                    $user_data['eight_column'] = $user_column->eight_column + 1;
+                    $user_data['eight_column']++;
                     if($opponent_tuzdyk_id == 8){
                         $opponent_data['kazan'] = $user_data['eight_column'];
                         $user_data['eight_column'] = 0;
@@ -974,7 +974,7 @@ class MoveController extends Controller
                 }
                 
                 else if($i == 9){
-                    $user_data['nine_column'] = $user_column->nine_column + 1;
+                    $user_data['nine_column']++;
                     if($opponent_tuzdyk_id == 9){
                         $opponent_data['kazan'] = $user_data['nine_column'];
                         $user_data['nine_column'] = 0;
