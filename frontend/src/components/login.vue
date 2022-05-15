@@ -19,7 +19,7 @@ const emit = defineEmits(['close'])
 const data = ref({email: '', password: ''})
 const login = async () => {
   try {
-    await axios.post('http://157.230.103.255:8000/api/login', data.value)
+    await axios.post('http://LOCALHOST:8000/api/login', data.value)
     .then(res => {
       if(res.status === 200) {
         localStorage.setItem('token', res.data.access_token)

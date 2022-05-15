@@ -32,7 +32,7 @@ const route = useRoute()
 
 const getGame =async () => {
     const apiClient = axios.create({
-        baseURL: 'http://157.230.103.255:8000/api',
+        baseURL: 'http://LOCALHOST:8000/api',
         headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
     })
     apiClient.get('/game/get/' + route.params.id)
@@ -44,7 +44,7 @@ const getGame =async () => {
 const userMove =async (index: number) => {
     if(move.value === 0) {
         const apiClient = axios.create({
-            baseURL: 'http://157.230.103.255:8000/api',
+            baseURL: 'http://LOCALHOST:8000/api',
             headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
         })
         apiClient.post('/game/usermove/' + route.params.id, { 'column' : index + 1})
@@ -60,7 +60,7 @@ const userMove =async (index: number) => {
 const opponentMove =async (index: number) => {
     if(move.value === 1) {
         const apiClient = axios.create({
-            baseURL: 'http://157.230.103.255:8000/api',
+            baseURL: 'http://LOCALHOST:8000/api',
             headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
         })
         apiClient.post('/game/opponentmove/' + route.params.id, { 'column' : 9 - index })
