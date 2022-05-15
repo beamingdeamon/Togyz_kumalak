@@ -27,7 +27,7 @@ const gameId = ref('')
 
 const createGame = async () => {
     const apiClient = axios.create({
-        baseURL: 'http://HTTP://157.230.103.255/api/api',
+        baseURL: 'http://localhost:8000/api',
         headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
     })
     apiClient.post('/game/create')
@@ -49,7 +49,7 @@ const joinToGame = async () => {
 const joinToGameByCode = async () => {
     if(gameCode.value) {
         const apiClient = axios.create({
-            baseURL: 'http://HTTP://157.230.103.255/api/api',
+            baseURL: 'http://localhost:8000/api',
             headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
         })
         apiClient.post('/game/connect/' + gameCode.value)

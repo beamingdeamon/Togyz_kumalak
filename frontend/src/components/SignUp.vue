@@ -22,7 +22,7 @@ const emit = defineEmits(['close'])
 const data = ref({name: '', email: '', password: ''})
 const register = async () => {
     try {
-        await axios.post('http://HTTP://157.230.103.255/api/api/register', data.value)
+        await axios.post('http://localhost:8000/api/register', data.value)
         .then(res => {
             if(res.status === 200) {
                 alert('Вы успешно зарегистрировалсь!')
