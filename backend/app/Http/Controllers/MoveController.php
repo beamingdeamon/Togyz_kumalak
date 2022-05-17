@@ -76,49 +76,142 @@ class MoveController extends Controller
         }
 
         //first column logic
+        
         if($request->column == 1){
-            $user_data['first_column'] = 1;
             $sphere_number = $user_column->first_column;
+            //if 1 sphere on column logic
+            if($sphere_number == 1){
+                $user_column->update(['second_column' => $user_column->second_column + 1, 'first_column' => 0]);
+                $game->update(['move'=> 1]);
+                $started_game = Game::where('id', $game->id)->with('user', 'opponent','user_column', 'opponent_column')->first();
+                return response()->json($started_game,200);
+            }else if($sphere_number == 0){
+                return response()->json("Вы не можете ходить данным полем",300);
+            }else{
+                $user_data['first_column'] = 1;
+            }
+            
         }
         
         else if($request->column == 2){
-            $user_data['second_column'] = 1;
             $sphere_number = $user_column->second_column;
+            //if 1 sphere on column logic
+            if($sphere_number == 1){
+                $user_column->update(['three_column' => $user_column->three_column + 1, 'second_column' => 0]);
+                $started_game = Game::where('id', $game->id)->with('user', 'opponent','user_column', 'opponent_column')->first();
+                $game->update(['move'=> 1]);
+                return response()->json($started_game,200);
+            }else if($sphere_number == 0){
+                return response()->json("Вы не можете ходить данным полем",300);
+            }else{
+                $user_data['second_column'] = 1;
+            }
         }
         
         else if($request->column == 3){
-            $user_data['three_column'] = 1;
             $sphere_number = $user_column->three_column;
+            //if 1 sphere on column logic
+            if($sphere_number == 1){
+                $user_column->update(['four_column' => $user_column->four_column + 1, 'three_column' => 0]);
+                $started_game = Game::where('id', $game->id)->with('user', 'opponent','user_column', 'opponent_column')->first();
+                $game->update(['move'=> 1]);
+                return response()->json($started_game,200);
+            }else if($sphere_number == 0){
+                return response()->json("Вы не можете ходить данным полем",300);
+            }else{
+                $user_data['three_column'] = 1;
+            }
         }
         
         else if($request->column == 4){
-            $user_data['four_column'] = 1;
             $sphere_number = $user_column->four_column;
+            //if 1 sphere on column logic
+            if($sphere_number == 1){
+                $user_column->update(['five_column' => $user_column->five_column + 1, 'four_column' => 0]);
+                $started_game = Game::where('id', $game->id)->with('user', 'opponent','user_column', 'opponent_column')->first();
+                $game->update(['move'=> 1]);
+                return response()->json($started_game,200);
+            }else if($sphere_number == 0){
+                return response()->json("Вы не можете ходить данным полем",300);
+            }else{
+                $user_data['four_column'] = 1;
+            }
         }
         
         else if($request->column == 5){
-            $user_data['five_column'] = 1;
             $sphere_number = $user_column->five_column;
+            //if 1 sphere on column logic
+            if($sphere_number == 1){
+                $user_column->update(['six_column' => $user_column->six_column + 1, 'five_column' => 0]);
+                $started_game = Game::where('id', $game->id)->with('user', 'opponent','user_column', 'opponent_column')->first();
+                $game->update(['move'=> 1]);
+                return response()->json($started_game,200);
+            }else if($sphere_number == 0){
+                return response()->json("Вы не можете ходить данным полем",300);
+            }else{
+                $user_data['five_column'] = 1;
+            }
         }
         
         else if($request->column == 6){
-            $user_data['six_column'] = 1;
             $sphere_number = $user_column->six_column;
+            //if 1 sphere on column logic
+            if($sphere_number == 1){
+                $user_column->update(['seven_column' => $user_column->seven_column + 1, 'six_column' => 0]);
+                $game->update(['move'=> 1]);
+                $started_game = Game::where('id', $game->id)->with('user', 'opponent','user_column', 'opponent_column')->first();
+                return response()->json($started_game,200);
+            }else if($sphere_number == 0){
+                return response()->json("Вы не можете ходить данным полем",300);
+            }else{
+                $user_data['six_column'] = 1;
+            }
         }
         
         else if($request->column == 7){
-            $user_data['seven_column'] = 1;
             $sphere_number = $user_column->seven_column;
+            //if 1 sphere on column logic
+            if($sphere_number == 1){
+                $user_column->update(['eight_column' => $user_column->eight_column + 1, 'seven_column' => 0]);
+                $game->update(['move'=> 1]);
+                $started_game = Game::where('id', $game->id)->with('user', 'opponent','user_column', 'opponent_column')->first();
+                return response()->json($started_game,200);
+            }else if($sphere_number == 0){
+                return response()->json("Вы не можете ходить данным полем",300);
+            }else{
+                $user_data['seven_column'] = 1;
+            }
         }
         
         else if($request->column == 8){
-            $user_data['eight_column'] = 1;
             $sphere_number = $user_column->eight_column;
+            //if 1 sphere on column logic
+            if($sphere_number == 1){
+                $user_column->update(['nine_column' => $user_column->nine_column + 1, 'eight_column' => 0]);
+                $game->update(['move'=> 1]);
+                $started_game = Game::where('id', $game->id)->with('user', 'opponent','user_column', 'opponent_column')->first();
+                return response()->json($started_game,200);
+            }else if($sphere_number == 0){
+                return response()->json("Вы не можете ходить данным полем",300);
+            }else{
+                $user_data['eight_column'] = 1;
+            }
         }
         
         else if($request->column == 9){
-            $user_data['nine_column'] = 1;
             $sphere_number = $user_column->nine_column;
+            //if 1 sphere on column logic
+            if($sphere_number == 1){
+                $user_column->update(['nine_column' => 0]);
+                $opponent_column->update(['first_column' => $opponent_column->first_column + 1]);
+                $game->update(['move'=> 1]);
+                $started_game = Game::where('id', $game->id)->with('user', 'opponent','user_column', 'opponent_column')->first();
+                return response()->json($started_game,200);
+            }else if($sphere_number == 0){
+                return response()->json("Вы не можете ходить данным полем",300);
+            }else{
+                $user_data['nine_column'] = 1;
+            }
         }
         
         $is_return = false;
@@ -683,48 +776,140 @@ class MoveController extends Controller
 
         //first column logic
         if($request->column == 1){
-            $user_data['first_column'] = 1;
             $sphere_number = $user_column->first_column;
+            //if 1 sphere on column logic
+            if($sphere_number == 1){
+                $user_column->update(['second_column' => $user_column->second_column + 1, 'first_column' => 0]);
+                $game->update(['move'=> 0]);
+                $started_game = Game::where('id', $game->id)->with('user', 'opponent','user_column', 'opponent_column')->first();
+                return response()->json($started_game,200);
+            }else if($sphere_number == 0){
+                return response()->json("Вы не можете ходить данным полем",300);
+            }else{
+                $user_data['first_column'] = 1;
+            }
+            
         }
         
         else if($request->column == 2){
-            $user_data['second_column'] = 1;
             $sphere_number = $user_column->second_column;
+            //if 1 sphere on column logic
+            if($sphere_number == 1){
+                $user_column->update(['three_column' => $user_column->three_column + 1, 'second_column' => 0]);
+                $started_game = Game::where('id', $game->id)->with('user', 'opponent','user_column', 'opponent_column')->first();
+                $game->update(['move'=> 0]);
+                return response()->json($started_game,200);
+            }else if($sphere_number == 0){
+                return response()->json("Вы не можете ходить данным полем",300);
+            }else{
+                $user_data['second_column'] = 1;
+            }
         }
         
         else if($request->column == 3){
-            $user_data['three_column'] = 1;
             $sphere_number = $user_column->three_column;
+            //if 1 sphere on column logic
+            if($sphere_number == 1){
+                $user_column->update(['four_column' => $user_column->four_column + 1, 'three_column' => 0]);
+                $started_game = Game::where('id', $game->id)->with('user', 'opponent','user_column', 'opponent_column')->first();
+                $game->update(['move'=> 0]);
+                return response()->json($started_game,200);
+            }else if($sphere_number == 0){
+                return response()->json("Вы не можете ходить данным полем",300);
+            }else{
+                $user_data['three_column'] = 1;
+            }
         }
         
         else if($request->column == 4){
-            $user_data['four_column'] = 1;
             $sphere_number = $user_column->four_column;
+            //if 1 sphere on column logic
+            if($sphere_number == 1){
+                $user_column->update(['five_column' => $user_column->five_column + 1, 'four_column' => 0]);
+                $started_game = Game::where('id', $game->id)->with('user', 'opponent','user_column', 'opponent_column')->first();
+                $game->update(['move'=> 0]);
+                return response()->json($started_game,200);
+            }else if($sphere_number == 0){
+                return response()->json("Вы не можете ходить данным полем",300);
+            }else{
+                $user_data['four_column'] = 1;
+            }
         }
         
         else if($request->column == 5){
-            $user_data['five_column'] = 1;
             $sphere_number = $user_column->five_column;
+            //if 1 sphere on column logic
+            if($sphere_number == 1){
+                $user_column->update(['six_column' => $user_column->six_column + 1, 'five_column' => 0]);
+                $started_game = Game::where('id', $game->id)->with('user', 'opponent','user_column', 'opponent_column')->first();
+                $game->update(['move'=> 0]);
+                return response()->json($started_game,200);
+            }else if($sphere_number == 0){
+                return response()->json("Вы не можете ходить данным полем",300);
+            }else{
+                $user_data['five_column'] = 1;
+            }
         }
         
         else if($request->column == 6){
-            $user_data['six_column'] = 1;
             $sphere_number = $user_column->six_column;
+            //if 1 sphere on column logic
+            if($sphere_number == 1){
+                $user_column->update(['seven_column' => $user_column->seven_column + 1, 'six_column' => 0]);
+                $game->update(['move'=> 0]);
+                $started_game = Game::where('id', $game->id)->with('user', 'opponent','user_column', 'opponent_column')->first();
+                return response()->json($started_game,200);
+            }else if($sphere_number == 0){
+                return response()->json("Вы не можете ходить данным полем",300);
+            }else{
+                $user_data['six_column'] = 1;
+            }
         }
         
         else if($request->column == 7){
-            $user_data['seven_column'] = 1;
             $sphere_number = $user_column->seven_column;
+            //if 1 sphere on column logic
+            if($sphere_number == 1){
+                $user_column->update(['eight_column' => $user_column->eight_column + 1, 'seven_column' => 0]);
+                $game->update(['move'=> 0]);
+                $started_game = Game::where('id', $game->id)->with('user', 'opponent','user_column', 'opponent_column')->first();
+                return response()->json($started_game,200);
+            }else if($sphere_number == 0){
+                return response()->json("Вы не можете ходить данным полем",300);
+            }else{
+                $user_data['seven_column'] = 1;
+            }
         }
         
         else if($request->column == 8){
-            $user_data['eight_column'] = 1;
             $sphere_number = $user_column->eight_column;
+            //if 1 sphere on column logic
+            if($sphere_number == 1){
+                $user_column->update(['nine_column' => $user_column->nine_column + 1, 'eight_column' => 0]);
+                $game->update(['move'=> 0]);
+                $started_game = Game::where('id', $game->id)->with('user', 'opponent','user_column', 'opponent_column')->first();
+                return response()->json($started_game,200);
+            }else if($sphere_number == 0){
+                return response()->json("Вы не можете ходить данным полем",300);
+            }else{
+                $user_data['eight_column'] = 1;
+            }
         }
         
         else if($request->column == 9){
-            $user_data['nine_column'] = 1;
             $sphere_number = $user_column->nine_column;
+            //if 1 sphere on column logic
+            if($sphere_number == 1){
+                $user_column->update(['nine_column' => 0]);
+                $opponent_column->update(['first_column' => $opponent_column->first_column + 1]);
+                $game->update(['move'=> 0]);
+                $started_game = Game::where('id', $game->id)->with('user', 'opponent','user_column', 'opponent_column')->first();
+                return response()->json($started_game,200);
+            }else if($sphere_number == 0){
+                return response()->json("Вы не можете ходить данным полем",300);
+            }else{
+                $user_data['nine_column'] = 1;
+            }
         }
         
         $user_columns_count_end = $request->column + $sphere_number;
