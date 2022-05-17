@@ -1,23 +1,37 @@
 <template>
-    <div class="board">
-        <div v-for="(column, index) in opponentColumn" :key="index">
-            <label>{{column}}</label>
-            <div class="section" @click="opponentMove(index)">
-                <div v-if="column == -1" class="tozdyk"></div>
-                <div v-else v-for="item in column" :key="item" class="kumalak"></div>
+    <div>
+        <div class="game_info" v-if="data">
+            <div class="game_info-block">
+                <label :class="move === 0 ? 'active-board' : ''" class="name">{{data.user.name}}</label>
+                <label class="kazan">Казан {{data.user_column.kazan}}</label>
             </div>
-            <div class="line"></div>
-            <label>{{section}}</label>
+            <div class="game_info-block" >
+                <label :class="move === 1 ? 'active-board' : ''" class="name" v-if="data.opponent">{{data.opponent.name}}</label>
+                <label class="kazan">Казан {{data.opponent_column.kazan}}</label>
+            </div>
         </div>
-        <div v-for="(column, index) in userColumn" :key="index">
-            <label>{{column}}</label>
-            <div class="section" @click="userMove(index)">
-                <div v-if="column == -1" class="tozdyk"></div>
-                <div v-else v-for="item in column" :key="item" class="kumalak">
+        <div class="board">
+            <div :class="data?.opponent?.email === userInfo?.email ? 'not-clickable' : ''" 
+                v-for="(column, index) in opponentColumn" :key="index">
+                <label class="section__number">{{column}}</label>
+                <div class="section" @click="opponentMove(index)">
+                    <div v-if="column == -1" class="tozdyk"></div>
+                    <div v-else v-for="item in column" :key="item" class="kumalak"></div>
                 </div>
+                <div class="line"></div>
+                <label>{{section}}</label>
             </div>
-            <div class="line"></div>
-            <label>{{section}}</label>
+            <div :class="data?.user?.email === userInfo?.email ? 'not-clickable' : ''" 
+                  v-for="(column, index) in userColumn" :key="index">
+                <label class="section__number">{{column}}</label>
+                <div class="section" @click="userMove(index)">
+                    <div v-if="column == -1" class="tozdyk"></div>
+                    <div v-else v-for="item in column" :key="item" class="kumalak">
+                    </div>
+                </div>
+                <div class="line"></div>
+                <label >{{section}}</label>
+            </div>
         </div>
     </div>
 </template>
@@ -29,6 +43,17 @@ import { useRouter, useRoute } from 'vue-router'
 
 const router = useRouter();
 const route = useRoute()
+
+const getUserInfo=async () => {
+    const apiClient = axios.create({
+        baseURL: 'http://localhost:8000/api',
+        headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
+    })
+    apiClient.get('/user/userinfo' )
+    .then(res => {
+        userInfo.value = res.data
+    })
+}
 
 const getGame =async () => {
     const apiClient = axios.create({
@@ -42,7 +67,8 @@ const getGame =async () => {
 }
 
 const userMove =async (index: number) => {
-    if(move.value === 0) {
+    debugger
+    if(data?.value?.user?.email === userInfo?.value?.email && move.value === 1) {
         const apiClient = axios.create({
             baseURL: 'http://localhost:8000/api',
             headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
@@ -58,7 +84,8 @@ const userMove =async (index: number) => {
 }
 
 const opponentMove =async (index: number) => {
-    if(move.value === 1) {
+    debugger
+    if(data?.value?.opponent?.email === userInfo?.value?.email && move.value === 0) {
         const apiClient = axios.create({
             baseURL: 'http://localhost:8000/api',
             headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
@@ -75,6 +102,7 @@ const opponentMove =async (index: number) => {
 
 const setGameData = (res) => {
     move.value = res.data.move;
+    data.value = res.data
 
     let localUserColumn = [] 
     localUserColumn.push(res.data.user_column.first_column)
@@ -116,12 +144,15 @@ const showLine = () => {
     }    
 };
 
+onMounted(getUserInfo)
 onMounted(showLine)
 onMounted(getGame)
 
 const userColumn = ref([9, 9, 9, 9, 9, 9, 9, 9, 9])
 const opponentColumn = ref([9, 9, 9, 9, 9, 9, 9, 9, 9])
 const move = ref(0)
+const data = ref()
+const userInfo = ref()
 
 </script>
 
@@ -178,5 +209,36 @@ const move = ref(0)
     border-radius: 2px;
 }
 
+.active-board {
+    zoom: 1.1;
+    color: red;
+    transition-timing-function: linear;
+    transition: zoom 2s;
+}
 
+.game_info {
+    caret-color: transparent;
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    color: white;
+    display: flex;
+    gap: 40px;
+    font-size: 25px;
+}
+
+.game_info-block {
+    display: flex;
+    flex-flow: column;
+}
+
+.section__number {
+    color: white;
+    font-size: 20px;
+}
+
+.not-clickable {
+    pointer-events: none;
+}
 </style>

@@ -54,6 +54,8 @@ const joinToGameByCode = async () => {
         })
         apiClient.post('/game/connect/' + gameCode.value)
         .then(res => {
+            debugger
+            gameId.value = res.data[1].id
             joinToGame()
         })
     }
