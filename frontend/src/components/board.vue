@@ -46,7 +46,7 @@ const route = useRoute()
 
 const getUserInfo=async () => {
     const apiClient = axios.create({
-        baseURL: 'http://localhost:8000/api',
+        baseURL: 'http://Localhost:8000/api',
         headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
     })
     apiClient.get('/user/userinfo' )
@@ -71,7 +71,7 @@ const getGame = () => {
 const userMove =async (index: number) => {
     if(data?.value?.user?.email === userInfo?.value?.email && move.value === 0) {
         const apiClient = axios.create({
-            baseURL: 'http://localhost:8000/api',
+            baseURL: 'http://Localhost:8000/api',
             headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
         })
         apiClient.post('/game/usermove/' + route.params.id, { 'column' : index + 1})
@@ -95,7 +95,7 @@ const userMove =async (index: number) => {
 const opponentMove =async (index: number) => {
     if(data?.value?.opponent?.email === userInfo?.value?.email && move.value === 1) {
         const apiClient = axios.create({
-            baseURL: 'http://localhost:8000/api',
+            baseURL: 'http://Localhost:8000/api',
             headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
         })
         apiClient.post('/game/opponentmove/' + route.params.id, { 'column' : 9 - index })
