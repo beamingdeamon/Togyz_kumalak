@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="board">
-            <div :class="data?.opponent?.email === userInfo?.email ? 'not-clickable' : ''" 
+            <div :class="data?.opponent?.email === userInfo?.email ? '' : 'not-clickable'" 
                 v-for="(column, index) in opponentColumn" :key="index">
                 <label class="section__number">{{column}}</label>
                 <div class="section" @click="opponentMove(index)">
@@ -21,7 +21,7 @@
                 <div class="line"></div>
                 <label>{{section}}</label>
             </div>
-            <div :class="data?.user?.email === userInfo?.email ? 'not-clickable' : ''" 
+            <div :class="data?.user?.email === userInfo?.email ? '' : 'not-clickable'" 
                   v-for="(column, index) in userColumn" :key="index">
                 <label class="section__number">{{column}}</label>
                 <div class="section" @click="userMove(index)">
@@ -55,27 +55,36 @@ const getUserInfo=async () => {
     })
 }
 
-const getGame =async () => {
-    const apiClient = axios.create({
-        baseURL: 'http://localhost:8000/api',
-        headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
-    })
-    apiClient.get('/game/get/' + route.params.id)
-    .then(res => {
-        setGameData(res)
-    })
+const getGame = () => {
+    setInterval( async () => {
+        const apiClient = axios.create({
+            baseURL: 'http://localhost:8000/api',
+            headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
+        })
+        await apiClient.get('/game/get/' + route.params.id)
+        .then(res => {
+                setGameData(res)
+        })
+    }, 3000)
 }
 
 const userMove =async (index: number) => {
-    debugger
-    if(data?.value?.user?.email === userInfo?.value?.email && move.value === 1) {
+    if(data?.value?.user?.email === userInfo?.value?.email && move.value === 0) {
         const apiClient = axios.create({
             baseURL: 'http://localhost:8000/api',
             headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
         })
         apiClient.post('/game/usermove/' + route.params.id, { 'column' : index + 1})
         .then(res => {
-            setGameData(res)
+            if(res.status === 200) {
+                setGameData(res);
+            }
+            else if(res.status === 300) {
+                alert('Вы не можете ходить пустой колонкой!')
+            } 
+            else {
+                alert("Ошибка системы возможно ход не засчитался!")
+            }
         })
     }
     else {
@@ -84,15 +93,22 @@ const userMove =async (index: number) => {
 }
 
 const opponentMove =async (index: number) => {
-    debugger
-    if(data?.value?.opponent?.email === userInfo?.value?.email && move.value === 0) {
+    if(data?.value?.opponent?.email === userInfo?.value?.email && move.value === 1) {
         const apiClient = axios.create({
             baseURL: 'http://localhost:8000/api',
             headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
         })
         apiClient.post('/game/opponentmove/' + route.params.id, { 'column' : 9 - index })
         .then(res => {
-            setGameData(res)
+            if(res.status === 200) {
+                setGameData(res);
+            }
+            else if(res.status === 300) {
+                alert('Вы не можете ходить пустой колонкой!')
+            } 
+            else {
+                alert("Ошибка системы возможно ход не засчитался!")
+            }
         })
     }
     else {
