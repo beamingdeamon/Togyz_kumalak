@@ -43,7 +43,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 apiClient = axios__WEBPACK_IMPORTED_MODULE_0___default().create({
-                  baseURL: 'http://Localhost:8000/api',
+                  baseURL: '/api',
                   headers: {
                     'Authorization': 'Bearer ' + localStorage.getItem('token')
                   }
@@ -70,7 +70,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 apiClient = axios__WEBPACK_IMPORTED_MODULE_0___default().create({
-                  baseURL: 'http://localhost:8000/api',
+                  baseURL: '/api',
                   headers: {
                     'Authorization': 'Bearer ' + localStorage.getItem('token')
                   }
@@ -102,7 +102,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     if (_this3.data.user.email === _this3.userInfo.email) {
                       if (_this3.move === 0) {
                         apiClient = axios__WEBPACK_IMPORTED_MODULE_0___default().create({
-                          baseURL: 'http://Localhost:8000/api',
+                          baseURL: '/api',
                           headers: {
                             'Authorization': 'Bearer ' + localStorage.getItem('token')
                           }
@@ -147,7 +147,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     if (_this4.data.opponent.email === _this4.userInfo.email) {
                       if (_this4.move === 1) {
                         apiClient = axios__WEBPACK_IMPORTED_MODULE_0___default().create({
-                          baseURL: 'http://Localhost:8000/api',
+                          baseURL: '/api',
                           headers: {
                             'Authorization': 'Bearer ' + localStorage.getItem('token')
                           }

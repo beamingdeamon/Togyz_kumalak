@@ -22,7 +22,7 @@ export default {
   methods: {
     async login() {
       try {
-        await axios.post('http://localhost:8000/api/login', this.data)
+        await axios.post('/api/login', this.data)
         .then(res => {
           if(res.status === 200) {
             localStorage.setItem('token', res.data.access_token)

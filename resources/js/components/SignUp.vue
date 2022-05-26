@@ -24,7 +24,7 @@ export default {
   methods: {
     async register() {
       try {
-        await axios.post('http://localhost:8000/api/register', this.data)
+        await axios.post('/api/register', this.data)
         .then(res => {
             if(res.status === 200) {
                 alert('Вы успешно зарегистрировалсь!')

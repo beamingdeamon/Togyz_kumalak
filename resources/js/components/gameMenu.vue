@@ -26,7 +26,7 @@ export default {
     methods: {
         async createGame() {
             const apiClient = axios.create({
-                baseURL: 'http://localhost:8000/api',
+                baseURL: '/api',
                 headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
             })
             apiClient.post('/game/create')
@@ -41,7 +41,7 @@ export default {
         async joinToGameByCode() {
             if(this.gameCode) {
                 const apiClient = axios.create({
-                    baseURL: 'http://localhost:8000/api',
+                    baseURL: '/api',
                     headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
                 })
                 apiClient.post('/game/connect/' + this.gameCode)

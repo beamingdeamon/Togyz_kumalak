@@ -42,7 +42,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_0___default().post('http://localhost:8000/api/register', _this.data).then(function (res) {
+                return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/register', _this.data).then(function (res) {
                   if (res.status === 200) {
                     alert('Вы успешно зарегистрировалсь!');
 
@@ -111,7 +111,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 apiClient = axios__WEBPACK_IMPORTED_MODULE_0___default().create({
-                  baseURL: 'http://localhost:8000/api',
+                  baseURL: '/api',
                   headers: {
                     'Authorization': 'Bearer ' + localStorage.getItem('token')
                   }
@@ -148,7 +148,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 if (_this2.gameCode) {
                   apiClient = axios__WEBPACK_IMPORTED_MODULE_0___default().create({
-                    baseURL: 'http://localhost:8000/api',
+                    baseURL: '/api',
                     headers: {
                       'Authorization': 'Bearer ' + localStorage.getItem('token')
                     }
@@ -216,7 +216,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_0___default().post('http://localhost:8000/api/login', _this.data).then(function (res) {
+                return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/login', _this.data).then(function (res) {
                   if (res.status === 200) {
                     localStorage.setItem('token', res.data.access_token);
                     alert('Вы успещно авторизироваись!');
