@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GameController;
+use App\Http\Controllers\MoveController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +17,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::get('/userinfo/{id}', [AuthController::class, 'getUserInfoById']);
+Route::group(['prefix' => 'user','as' => 'api.','namespace' => 'Api\User','middleware' => ['auth:sanctum']], function () {
+    Route::get('/userinfo', [AuthController::class, 'getUserInfo']);
+    Route::get('/games', [AuthController::class, 'getUserGames']);
+});
+
+
+Route::group(['prefix' => 'game','as' => 'api.','namespace' => 'Api\Game','middleware' => ['auth:sanctum']], function () {
+    Route::post('/create', [GameController::class, 'createGame']);
+    Route::get('/get/{id}', [GameController::class, 'getGameInfo']);
+    Route::post('/connect/{game_code}', [GameController::class, 'connectToGame']);
+    Route::post('/usermove/{game_id}', [MoveController::class, 'userMove']);
+    Route::post('/opponentmove/{game_id}', [MoveController::class, 'opponentMove']);
 });
