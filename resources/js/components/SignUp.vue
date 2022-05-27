@@ -28,6 +28,7 @@ export default {
         .then(res => {
             if(res.status === 200) {
                 alert('Вы успешно зарегистрировалсь!')
+                location.reload()
                 this.$emit('close')
             }
         })

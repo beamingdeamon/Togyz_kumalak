@@ -45,6 +45,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/register', _this.data).then(function (res) {
                   if (res.status === 200) {
                     alert('Вы успешно зарегистрировалсь!');
+                    location.reload();
 
                     _this.$emit('close');
                   }
@@ -219,11 +220,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/login', _this.data).then(function (res) {
                   if (res.status === 200) {
                     localStorage.setItem('token', res.data.access_token);
-                    alert('Вы успещно авторизироваись!');
 
                     _this.$emit('close');
 
-                    return;
+                    _this.$router.go(0);
                   }
 
                   if (res.status === 203) {
@@ -495,7 +495,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     placeholder: "test@mail.ru",
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $data.data.email = $event;
-    })
+    }),
+    minlength: "5"
   }, null, 512
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.data.email]]), _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
@@ -504,7 +505,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return $data.data.password = $event;
     }),
-    placeholder: "Пароль"
+    placeholder: "Пароль",
+    minlength: "5"
   }, null, 512
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.data.password]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {

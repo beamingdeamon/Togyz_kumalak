@@ -3,9 +3,9 @@
       <label class="login__close" @click="$emit('close')">x</label>
       <div class="input_wrappers">
         <h2 class="first_text">Введите свою почту: </h2>
-        <input class="login__input" placeholder="test@mail.ru" v-model="data.email"/>
+        <input class="login__input" placeholder="test@mail.ru" v-model="data.email" minlength="5"/>
         <h2>Введите пароль: </h2>
-        <input class="login__input" type="password" v-model="data.password" placeholder="Пароль" />
+        <input class="login__input" type="password" v-model="data.password" placeholder="Пароль" minlength="5"/>
         <button class="login__button" @click="login">Войти</button>
       </div>
   </div>
@@ -26,9 +26,8 @@ export default {
         .then(res => {
           if(res.status === 200) {
             localStorage.setItem('token', res.data.access_token)
-            alert('Вы успещно авторизироваись!')
             this.$emit('close');
-            return;
+            this.$router.go(0);
           }
           if(res.status === 203) {
             alert(res.data.message)
