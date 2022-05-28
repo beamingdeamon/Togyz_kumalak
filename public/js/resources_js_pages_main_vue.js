@@ -46,6 +46,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   if (res.status === 200) {
                     alert('Вы успешно зарегистрировалсь!');
                     location.reload();
+                    debugger;
 
                     _this.$emit('close');
                   }

@@ -29,6 +29,7 @@ export default {
             if(res.status === 200) {
                 alert('Вы успешно зарегистрировалсь!')
                 location.reload()
+                debugger
                 this.$emit('close')
             }
         })
