@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="game_info" v-if="data">
+        <div :class="isOpponent ? 'game_info__opponent' : 'game_info__user'" class="game_info" v-if="data">
             <div class="game_info-block">
                 <label :class="move === 0 ? 'active-board' : ''" class="name">{{data.user.name}}</label>
                 <label class="kazan">Казан {{data.user_column.kazan}}</label>
@@ -10,7 +10,7 @@
                 <label class="kazan">Казан {{data.opponent_column.kazan}}</label>
             </div>
         </div>
-        <div class="board">
+        <div :class="isOpponent ? 'game_info__opponent' : 'game_info__user'" class="board">
             <div :class="data?.opponent?.email === userInfo?.email ? '' : 'not-clickable'" 
                 v-for="(column, index) in opponentColumn" :key="index">
                 <label class="section__number">{{column}}</label>
@@ -43,7 +43,8 @@ export default {
             data: null,
             move: 0,
             userColumn: [9, 9, 9, 9, 9, 9, 9, 9, 9],
-            opponentColumn: [9, 9, 9, 9, 9, 9, 9, 9, 9]
+            opponentColumn: [9, 9, 9, 9, 9, 9, 9, 9, 9],
+            isOpponent: true,
         }
     },
     methods: {
@@ -66,6 +67,9 @@ export default {
                 await apiClient.get('/game/get/' +this.$route.params.id)
                 .then(res => {
                         this.setGameData(res)
+                        if(res.data.user.email === this.userInfo.email) {
+                            this.isOpponent = false
+                        }
                 })
             }, 3000)
         },
@@ -248,6 +252,13 @@ export default {
     display: flex;
     gap: 40px;
     font-size: 25px;
+}
+
+.game_info__opponent {
+    flex-flow: row-reverse;
+} 
+.game_info__user {
+    flex-flow: row;
 }
 
 .game_info-block {
