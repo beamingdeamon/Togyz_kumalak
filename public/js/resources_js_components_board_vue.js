@@ -77,7 +77,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 });
                 _context2.next = 3;
                 return apiClient.get('/game/get/' + _this2.$route.params.id).then(function (res) {
-                  setGameData(res);
+                  _this2.setGameData(res);
                 });
 
               case 3:
@@ -111,7 +111,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                           'column': index + 1
                         }).then(function (res) {
                           if (res.status === 200) {
-                            setGameData(res);
+                            _this3.setGameData(res);
                           } else if (res.status === 300) {
                             alert('Вы не можете ходить пустой колонкой!');
                           } else {
@@ -156,7 +156,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                           'column': 9 - index
                         }).then(function (res) {
                           if (res.status === 200) {
-                            setGameData(res);
+                            _this4.setGameData(res);
                           } else if (res.status === 300) {
                             alert('Вы не можете ходить пустой колонкой!');
                           } else {

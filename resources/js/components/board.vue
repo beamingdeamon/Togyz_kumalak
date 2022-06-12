@@ -19,7 +19,7 @@
                     <div v-else v-for="item in column" :key="item" class="kumalak"></div>
                 </div>
                 <div class="line"></div>
-                <label>{{section}}</label>
+                <label>{{column}}</label>
             </div>
             <div :class="data?.user?.email === userInfo?.email ? '' : 'not-clickable'" 
                   v-for="(column, index) in userColumn" :key="index">
@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="line"></div>
-                <label >{{section}}</label>
+                <label >{{column}}</label>
             </div>
         </div>
     </div>
