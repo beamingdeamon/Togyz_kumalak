@@ -13,6 +13,7 @@
         <div v-if="data?.opponent?.email === userInfo?.email" class="board">
             <div :class="data?.user?.email === userInfo?.email ? '' : 'not-clickable'" 
                   v-for="(column, index) in userColumn" :key="index">
+                <label v-if="column == -1" class="section__number"></label>
                 <label class="section__number">{{column}}</label>
                 <div class="section" @click="userMove(index)">
                     <div v-if="column == -1" class="tozdyk"></div>
@@ -23,6 +24,7 @@
             </div>
             <div :class="data?.opponent?.email === userInfo?.email ? '' : 'not-clickable'" 
                 v-for="(column, index) in opponentColumn" :key="index">
+                <label v-if="column == -1" class="section__number"></label>
                 <label class="section__number">{{column}}</label>
                 <div class="section" @click="opponentMove(index)">
                     <div v-if="column == -1" class="tozdyk"></div>
@@ -34,6 +36,7 @@
         <div v-if="data?.opponent?.email !== userInfo?.email" class="board">
             <div :class="data?.opponent?.email === userInfo?.email ? '' : 'not-clickable'" 
                 v-for="(column, index) in opponentColumn" :key="index">
+                <label v-if="column == -1" class="section__number"></label>
                 <label class="section__number">{{column}}</label>
                 <div class="section" @click="opponentMove(index)">
                     <div v-if="column == -1" class="tozdyk"></div>
@@ -43,6 +46,7 @@
             </div>
             <div :class="data?.user?.email === userInfo?.email ? '' : 'not-clickable'" 
                   v-for="(column, index) in userColumn" :key="index">
+                <label v-if="column == -1" class="section__number"></label>
                 <label class="section__number">{{column}}</label>
                 <div class="section" @click="userMove(index)">
                     <div v-if="column == -1" class="tozdyk"></div>
@@ -152,29 +156,56 @@ export default {
             this.move = res.data.move;
             this.data = res.data
 
-            let localUserColumn = [] 
-            localUserColumn.push(res.data.user_column.first_column)
-            localUserColumn.push(res.data.user_column.second_column)
-            localUserColumn.push(res.data.user_column.three_column)
-            localUserColumn.push(res.data.user_column.four_column)
-            localUserColumn.push(res.data.user_column.five_column)
-            localUserColumn.push(res.data.user_column.six_column)
-            localUserColumn.push(res.data.user_column.seven_column)
-            localUserColumn.push(res.data.user_column.eight_column)
-            localUserColumn.push(res.data.user_column.nine_column)
-            this.userColumn = localUserColumn;
+            if(data?.opponent?.email === userInfo?.email) {
+                let localUserColumn = [] 
+                localUserColumn.push(res.data.user_column.first_column)
+                localUserColumn.push(res.data.user_column.second_column)
+                localUserColumn.push(res.data.user_column.three_column)
+                localUserColumn.push(res.data.user_column.four_column)
+                localUserColumn.push(res.data.user_column.five_column)
+                localUserColumn.push(res.data.user_column.six_column)
+                localUserColumn.push(res.data.user_column.seven_column)
+                localUserColumn.push(res.data.user_column.eight_column)
+                localUserColumn.push(res.data.user_column.nine_column)
+                this.userColumn = localUserColumn;
 
-            let localOppCol = []
-            localOppCol.push(res.data.opponent_column.nine_column)
-            localOppCol.push(res.data.opponent_column.eight_column)
-            localOppCol.push(res.data.opponent_column.seven_column)
-            localOppCol.push(res.data.opponent_column.six_column)
-            localOppCol.push(res.data.opponent_column.five_column) 
-            localOppCol.push(res.data.opponent_column.four_column)  
-            localOppCol.push(res.data.opponent_column.three_column)
-            localOppCol.push(res.data.opponent_column.second_column)
-            localOppCol.push(res.data.opponent_column.first_column)
-            this.opponentColumn = localOppCol
+                let localOppCol = []
+                localOppCol.push(res.data.opponent_column.nine_column)
+                localOppCol.push(res.data.opponent_column.eight_column)
+                localOppCol.push(res.data.opponent_column.seven_column)
+                localOppCol.push(res.data.opponent_column.six_column)
+                localOppCol.push(res.data.opponent_column.five_column) 
+                localOppCol.push(res.data.opponent_column.four_column)  
+                localOppCol.push(res.data.opponent_column.three_column)
+                localOppCol.push(res.data.opponent_column.second_column)
+                localOppCol.push(res.data.opponent_column.first_column)
+                this.opponentColumn = localOppCol
+            }
+            else {
+                let localUserColumn = [] 
+                localOppCol.push(res.data.user_column.first_column)
+                localOppCol.push(res.data.user_column.second_column)
+                localOppCol.push(res.data.user_column.three_column)
+                localOppCol.push(res.data.user_column.four_column)
+                localOppCol.push(res.data.user_column.five_column)
+                localOppCol.push(res.data.user_column.six_column)
+                localOppCol.push(res.data.user_column.seven_column)
+                localOppCol.push(res.data.user_column.eight_column)
+                localOppCol.push(res.data.user_column.nine_column)
+
+                let localOppCol = []
+                localUserColumn.push(res.data.opponent_column.nine_column)
+                localUserColumn.push(res.data.opponent_column.eight_column)
+                localUserColumn.push(res.data.opponent_column.seven_column)
+                localUserColumn.push(res.data.opponent_column.six_column)
+                localUserColumn.push(res.data.opponent_column.five_column) 
+                localUserColumn.push(res.data.opponent_column.four_column)  
+                localUserColumn.push(res.data.opponent_column.three_column)
+                localUserColumn.push(res.data.opponent_column.second_column)
+                localUserColumn.push(res.data.opponent_column.first_column)
+                this.opponentColumn = localOppCol
+                this.userColumn = localUserColumn;
+            }
         },
         showLine() {
             for(let index=0; index<18;index++) {

@@ -179,30 +179,78 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     setGameData: function setGameData(res) {
+      var _data, _data$opponent, _userInfo;
+
       this.move = res.data.move;
       this.data = res.data;
-      var localUserColumn = [];
-      localUserColumn.push(res.data.user_column.first_column);
-      localUserColumn.push(res.data.user_column.second_column);
-      localUserColumn.push(res.data.user_column.three_column);
-      localUserColumn.push(res.data.user_column.four_column);
-      localUserColumn.push(res.data.user_column.five_column);
-      localUserColumn.push(res.data.user_column.six_column);
-      localUserColumn.push(res.data.user_column.seven_column);
-      localUserColumn.push(res.data.user_column.eight_column);
-      localUserColumn.push(res.data.user_column.nine_column);
-      this.userColumn = localUserColumn;
-      var localOppCol = [];
-      localOppCol.push(res.data.opponent_column.nine_column);
-      localOppCol.push(res.data.opponent_column.eight_column);
-      localOppCol.push(res.data.opponent_column.seven_column);
-      localOppCol.push(res.data.opponent_column.six_column);
-      localOppCol.push(res.data.opponent_column.five_column);
-      localOppCol.push(res.data.opponent_column.four_column);
-      localOppCol.push(res.data.opponent_column.three_column);
-      localOppCol.push(res.data.opponent_column.second_column);
-      localOppCol.push(res.data.opponent_column.first_column);
-      this.opponentColumn = localOppCol;
+
+      if (((_data = data) === null || _data === void 0 ? void 0 : (_data$opponent = _data.opponent) === null || _data$opponent === void 0 ? void 0 : _data$opponent.email) === ((_userInfo = userInfo) === null || _userInfo === void 0 ? void 0 : _userInfo.email)) {
+        var localUserColumn = [];
+        localUserColumn.push(res.data.user_column.first_column);
+        localUserColumn.push(res.data.user_column.second_column);
+        localUserColumn.push(res.data.user_column.three_column);
+        localUserColumn.push(res.data.user_column.four_column);
+        localUserColumn.push(res.data.user_column.five_column);
+        localUserColumn.push(res.data.user_column.six_column);
+        localUserColumn.push(res.data.user_column.seven_column);
+        localUserColumn.push(res.data.user_column.eight_column);
+        localUserColumn.push(res.data.user_column.nine_column);
+        this.userColumn = localUserColumn;
+        var localOppCol = [];
+        localOppCol.push(res.data.opponent_column.nine_column);
+        localOppCol.push(res.data.opponent_column.eight_column);
+        localOppCol.push(res.data.opponent_column.seven_column);
+        localOppCol.push(res.data.opponent_column.six_column);
+        localOppCol.push(res.data.opponent_column.five_column);
+        localOppCol.push(res.data.opponent_column.four_column);
+        localOppCol.push(res.data.opponent_column.three_column);
+        localOppCol.push(res.data.opponent_column.second_column);
+        localOppCol.push(res.data.opponent_column.first_column);
+        this.opponentColumn = localOppCol;
+      } else {
+        var _localUserColumn = [];
+
+        _localOppCol.push(res.data.user_column.first_column);
+
+        _localOppCol.push(res.data.user_column.second_column);
+
+        _localOppCol.push(res.data.user_column.three_column);
+
+        _localOppCol.push(res.data.user_column.four_column);
+
+        _localOppCol.push(res.data.user_column.five_column);
+
+        _localOppCol.push(res.data.user_column.six_column);
+
+        _localOppCol.push(res.data.user_column.seven_column);
+
+        _localOppCol.push(res.data.user_column.eight_column);
+
+        _localOppCol.push(res.data.user_column.nine_column);
+
+        var _localOppCol = [];
+
+        _localUserColumn.push(res.data.opponent_column.nine_column);
+
+        _localUserColumn.push(res.data.opponent_column.eight_column);
+
+        _localUserColumn.push(res.data.opponent_column.seven_column);
+
+        _localUserColumn.push(res.data.opponent_column.six_column);
+
+        _localUserColumn.push(res.data.opponent_column.five_column);
+
+        _localUserColumn.push(res.data.opponent_column.four_column);
+
+        _localUserColumn.push(res.data.opponent_column.three_column);
+
+        _localUserColumn.push(res.data.opponent_column.second_column);
+
+        _localUserColumn.push(res.data.opponent_column.first_column);
+
+        this.opponentColumn = _localOppCol;
+        this.userColumn = _localUserColumn;
+      }
     },
     showLine: function showLine() {
       var _loop = function _loop(index) {
@@ -259,64 +307,80 @@ var _hoisted_5 = {
   "class": "board"
 };
 var _hoisted_6 = {
+  key: 0,
   "class": "section__number"
 };
-var _hoisted_7 = ["onClick"];
-var _hoisted_8 = {
+var _hoisted_7 = {
+  "class": "section__number"
+};
+var _hoisted_8 = ["onClick"];
+var _hoisted_9 = {
   key: 0,
   "class": "tozdyk"
 };
 
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "line"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_10 = {
+var _hoisted_11 = {
+  key: 0,
   "class": "section__number"
 };
-var _hoisted_11 = ["onClick"];
 var _hoisted_12 = {
+  "class": "section__number"
+};
+var _hoisted_13 = ["onClick"];
+var _hoisted_14 = {
   key: 0,
   "class": "tozdyk"
 };
 
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "line"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_14 = {
+var _hoisted_16 = {
   key: 2,
   "class": "board"
 };
-var _hoisted_15 = {
+var _hoisted_17 = {
+  key: 0,
   "class": "section__number"
 };
-var _hoisted_16 = ["onClick"];
-var _hoisted_17 = {
+var _hoisted_18 = {
+  "class": "section__number"
+};
+var _hoisted_19 = ["onClick"];
+var _hoisted_20 = {
   key: 0,
   "class": "tozdyk"
 };
 
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "line"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_19 = {
+var _hoisted_22 = {
+  key: 0,
   "class": "section__number"
 };
-var _hoisted_20 = ["onClick"];
-var _hoisted_21 = {
+var _hoisted_23 = {
+  "class": "section__number"
+};
+var _hoisted_24 = ["onClick"];
+var _hoisted_25 = {
   key: 0,
   "class": "tozdyk"
 };
 
-var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "line"
 }, null, -1
 /* HOISTED */
@@ -349,14 +413,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(((_$data$data3 = $data.data) === null || _$data$data3 === void 0 ? void 0 : (_$data$data3$user = _$data$data3.user) === null || _$data$data3$user === void 0 ? void 0 : _$data$data3$user.email) === ((_$data$userInfo3 = $data.userInfo) === null || _$data$userInfo3 === void 0 ? void 0 : _$data$userInfo3.email) ? '' : 'not-clickable'),
       key: index
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(column), 1
+    }, [column == -1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("label", _hoisted_6)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(column), 1
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
       "class": "section",
       onClick: function onClick($event) {
         return $options.userMove(index);
       }
-    }, [column == -1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    }, [column == -1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_9)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
       key: 1
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(column, function (item) {
       return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
@@ -367,7 +431,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* KEYED_FRAGMENT */
     ))], 8
     /* PROPS */
-    , _hoisted_7), _hoisted_9], 2
+    , _hoisted_8), _hoisted_10], 2
     /* CLASS */
     );
   }), 128
@@ -378,14 +442,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(((_$data$data4 = $data.data) === null || _$data$data4 === void 0 ? void 0 : (_$data$data4$opponent = _$data$data4.opponent) === null || _$data$data4$opponent === void 0 ? void 0 : _$data$data4$opponent.email) === ((_$data$userInfo4 = $data.userInfo) === null || _$data$userInfo4 === void 0 ? void 0 : _$data$userInfo4.email) ? '' : 'not-clickable'),
       key: index
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(column), 1
+    }, [column == -1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("label", _hoisted_11)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(column), 1
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
       "class": "section",
       onClick: function onClick($event) {
         return $options.opponentMove(index);
       }
-    }, [column == -1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_12)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    }, [column == -1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
       key: 1
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(column, function (item) {
       return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
@@ -396,25 +460,25 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* KEYED_FRAGMENT */
     ))], 8
     /* PROPS */
-    , _hoisted_11), _hoisted_13], 2
+    , _hoisted_13), _hoisted_15], 2
     /* CLASS */
     );
   }), 128
   /* KEYED_FRAGMENT */
-  ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), ((_$data$data5 = $data.data) === null || _$data$data5 === void 0 ? void 0 : (_$data$data5$opponent = _$data$data5.opponent) === null || _$data$data5$opponent === void 0 ? void 0 : _$data$data5$opponent.email) !== ((_$data$userInfo5 = $data.userInfo) === null || _$data$userInfo5 === void 0 ? void 0 : _$data$userInfo5.email) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.opponentColumn, function (column, index) {
+  ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), ((_$data$data5 = $data.data) === null || _$data$data5 === void 0 ? void 0 : (_$data$data5$opponent = _$data$data5.opponent) === null || _$data$data5$opponent === void 0 ? void 0 : _$data$data5$opponent.email) !== ((_$data$userInfo5 = $data.userInfo) === null || _$data$userInfo5 === void 0 ? void 0 : _$data$userInfo5.email) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_16, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.opponentColumn, function (column, index) {
     var _$data$data6, _$data$data6$opponent, _$data$userInfo6;
 
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(((_$data$data6 = $data.data) === null || _$data$data6 === void 0 ? void 0 : (_$data$data6$opponent = _$data$data6.opponent) === null || _$data$data6$opponent === void 0 ? void 0 : _$data$data6$opponent.email) === ((_$data$userInfo6 = $data.userInfo) === null || _$data$userInfo6 === void 0 ? void 0 : _$data$userInfo6.email) ? '' : 'not-clickable'),
       key: index
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(column), 1
+    }, [column == -1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("label", _hoisted_17)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(column), 1
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
       "class": "section",
       onClick: function onClick($event) {
         return $options.opponentMove(index);
       }
-    }, [column == -1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_17)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    }, [column == -1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_20)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
       key: 1
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(column, function (item) {
       return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
@@ -425,7 +489,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* KEYED_FRAGMENT */
     ))], 8
     /* PROPS */
-    , _hoisted_16), _hoisted_18], 2
+    , _hoisted_19), _hoisted_21], 2
     /* CLASS */
     );
   }), 128
@@ -436,14 +500,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(((_$data$data7 = $data.data) === null || _$data$data7 === void 0 ? void 0 : (_$data$data7$user = _$data$data7.user) === null || _$data$data7$user === void 0 ? void 0 : _$data$data7$user.email) === ((_$data$userInfo7 = $data.userInfo) === null || _$data$userInfo7 === void 0 ? void 0 : _$data$userInfo7.email) ? '' : 'not-clickable'),
       key: index
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(column), 1
+    }, [column == -1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("label", _hoisted_22)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(column), 1
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
       "class": "section",
       onClick: function onClick($event) {
         return $options.userMove(index);
       }
-    }, [column == -1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_21)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    }, [column == -1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_25)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
       key: 1
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(column, function (item) {
       return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
@@ -454,7 +518,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* KEYED_FRAGMENT */
     ))], 8
     /* PROPS */
-    , _hoisted_20), _hoisted_22], 2
+    , _hoisted_24), _hoisted_26], 2
     /* CLASS */
     );
   }), 128
