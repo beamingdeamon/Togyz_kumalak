@@ -29,7 +29,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       data: null,
       move: 0,
       userColumn: [9, 9, 9, 9, 9, 9, 9, 9, 9],
-      opponentColumn: [9, 9, 9, 9, 9, 9, 9, 9, 9]
+      opponentColumn: [9, 9, 9, 9, 9, 9, 9, 9, 9],
+      isOpponent: true
     };
   },
   methods: {
@@ -78,6 +79,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context2.next = 3;
                 return apiClient.get('/game/get/' + _this2.$route.params.id).then(function (res) {
                   _this2.setGameData(res);
+
+                  if (res.data.user.email === _this2.userInfo.email) {
+                    _this2.isOpponent = false;
+                  }
                 });
 
               case 3:
@@ -88,7 +93,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2);
       })), 3000);
     },
-    userMove: function userMove() {
+    userMove: function userMove(index) {
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
@@ -133,7 +138,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee3);
       }))();
     },
-    opponentMove: function opponentMove() {
+    opponentMove: function opponentMove(index) {
       var _this4 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
@@ -205,11 +210,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.opponentColumn = localOppCol;
     },
     showLine: function showLine() {
-      var _loop = function _loop(_index) {
-        var section = document.getElementsByClassName('section')[_index];
-
-        var line = document.getElementsByClassName('line')[_index];
-
+      var _loop = function _loop(index) {
+        var section = document.getElementsByClassName('section')[index];
+        var line = document.getElementsByClassName('line')[index];
         section.addEventListener('mouseover', function () {
           line.style.visibility = 'inherit';
         });
@@ -218,8 +221,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         });
       };
 
-      for (var _index = 0; _index < 18; _index++) {
-        _loop(_index);
+      for (var index = 0; index < 18; index++) {
+        _loop(index);
       }
     }
   },
@@ -245,82 +248,82 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  key: 0,
-  "class": "game_info"
+  "class": "game_info-block"
 };
 var _hoisted_2 = {
-  "class": "game_info-block"
+  "class": "kazan"
 };
 var _hoisted_3 = {
-  "class": "kazan"
-};
-var _hoisted_4 = {
   "class": "game_info-block"
 };
-var _hoisted_5 = {
+var _hoisted_4 = {
   "class": "kazan"
 };
-var _hoisted_6 = {
-  "class": "board"
-};
-var _hoisted_7 = {
+var _hoisted_5 = {
   "class": "section__number"
 };
-var _hoisted_8 = ["onClick"];
-var _hoisted_9 = {
+var _hoisted_6 = ["onClick"];
+var _hoisted_7 = {
   key: 0,
   "class": "tozdyk"
 };
 
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "line"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_11 = {
+var _hoisted_9 = {
   "class": "section__number"
 };
-var _hoisted_12 = ["onClick"];
-var _hoisted_13 = {
+var _hoisted_10 = ["onClick"];
+var _hoisted_11 = {
   key: 0,
   "class": "tozdyk"
 };
 
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "line"
 }, null, -1
 /* HOISTED */
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [$data.data ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [$data.data ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+    key: 0,
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$data.isOpponent ? 'game_info__opponent' : 'game_info__user', "game_info"])
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$data.move === 0 ? 'active-board' : '', "name"])
   }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.data.user.name), 3
   /* TEXT, CLASS */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_3, "Казан " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.data.user_column.kazan), 1
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_2, "Казан " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.data.user_column.kazan), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [$data.data.opponent ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("label", {
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [$data.data.opponent ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("label", {
     key: 0,
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$data.move === 1 ? 'active-board' : '', "name"])
   }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.data.opponent.name), 3
   /* TEXT, CLASS */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_5, "Казан " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.data.opponent_column.kazan), 1
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_4, "Казан " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.data.opponent_column.kazan), 1
   /* TEXT */
-  )])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.opponentColumn, function (column, index) {
+  )])], 2
+  /* CLASS */
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$data.isOpponent ? 'game_info__opponent' : 'game_info__user', "board"])
+  }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.opponentColumn, function (column, index) {
     var _$data$data, _$data$data$opponent, _$data$userInfo;
 
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(((_$data$data = $data.data) === null || _$data$data === void 0 ? void 0 : (_$data$data$opponent = _$data$data.opponent) === null || _$data$data$opponent === void 0 ? void 0 : _$data$data$opponent.email) === ((_$data$userInfo = $data.userInfo) === null || _$data$userInfo === void 0 ? void 0 : _$data$userInfo.email) ? '' : 'not-clickable'),
       key: index
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(column), 1
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(column), 1
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
       "class": "section",
       onClick: function onClick($event) {
         return $options.opponentMove(index);
       }
-    }, [column == -1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_9)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    }, [column == -1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_7)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
       key: 1
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(column, function (item) {
       return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
@@ -331,9 +334,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* KEYED_FRAGMENT */
     ))], 8
     /* PROPS */
-    , _hoisted_8), _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.section), 1
-    /* TEXT */
-    )], 2
+    , _hoisted_6), _hoisted_8], 2
     /* CLASS */
     );
   }), 128
@@ -344,14 +345,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(((_$data$data2 = $data.data) === null || _$data$data2 === void 0 ? void 0 : (_$data$data2$user = _$data$data2.user) === null || _$data$data2$user === void 0 ? void 0 : _$data$data2$user.email) === ((_$data$userInfo2 = $data.userInfo) === null || _$data$userInfo2 === void 0 ? void 0 : _$data$userInfo2.email) ? '' : 'not-clickable'),
       key: index
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(column), 1
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(column), 1
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
       "class": "section",
       onClick: function onClick($event) {
         return $options.userMove(index);
       }
-    }, [column == -1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_13)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    }, [column == -1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_11)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
       key: 1
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(column, function (item) {
       return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
@@ -362,14 +363,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* KEYED_FRAGMENT */
     ))], 8
     /* PROPS */
-    , _hoisted_12), _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.section), 1
-    /* TEXT */
-    )], 2
+    , _hoisted_10), _hoisted_12], 2
     /* CLASS */
     );
   }), 128
   /* KEYED_FRAGMENT */
-  ))])]);
+  ))], 2
+  /* CLASS */
+  )]);
 }
 
 /***/ }),
@@ -390,7 +391,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.board {\r\n    display: grid;\r\n    grid-template-columns: auto auto auto auto auto auto auto auto auto;\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n    text-align: center;\n}\n.section {\r\n    display: grid;\r\n    grid-template-columns: auto auto;\r\n\r\n    width: 80px;\r\n    height: 200px;\r\n    background-color: aqua;\r\n    margin: 5px;\r\n    border: 3px solid black;\r\n    border-radius: 5px;\r\n\r\n    cursor: pointer;\r\n\r\n    caret-color: transparent;\n}\n.kumalak {\r\n    width: 30px;\r\n    height: 30px;\r\n    border-radius: 50%;\r\n    background-color: saddlebrown;\r\n    margin: auto;\n}\n.tozdyk {\r\n    width: 30px;\r\n    height: 30px;\r\n    border-radius: 50%;\r\n    background-color: white;\r\n    margin: auto;\n}\n.line {\r\n    visibility: hidden;\r\n    height: 5px;\r\n    background-color: black;\r\n    width: 84px;\r\n    margin: 0 auto;\r\n    border-radius: 2px;\n}\n.active-board {\r\n    zoom: 1.1;\r\n    color: red;\r\n    transition-timing-function: linear;\r\n    transition: zoom 2s;\n}\n.game_info {\r\n    caret-color: transparent;\r\n    position: absolute;\r\n    top: 40px;\r\n    left: 50%;\r\n    transform: translate(-50%, 0);\r\n    color: white;\r\n    display: flex;\r\n    gap: 40px;\r\n    font-size: 25px;\n}\n.game_info-block {\r\n    display: flex;\r\n    flex-flow: column;\n}\n.section__number {\r\n    color: white;\r\n    font-size: 20px;\n}\n.not-clickable {\r\n    pointer-events: none;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.board {\r\n    display: grid;\r\n    grid-template-columns: auto auto auto auto auto auto auto auto auto;\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n    text-align: center;\n}\n.section {\r\n    display: grid;\r\n    grid-template-columns: auto auto;\r\n\r\n    width: 80px;\r\n    height: 200px;\r\n    background-color: aqua;\r\n    margin: 5px;\r\n    border: 3px solid black;\r\n    border-radius: 5px;\r\n\r\n    cursor: pointer;\r\n\r\n    caret-color: transparent;\n}\n.kumalak {\r\n    width: 30px;\r\n    height: 30px;\r\n    border-radius: 50%;\r\n    background-color: saddlebrown;\r\n    margin: auto;\n}\n.tozdyk {\r\n    width: 30px;\r\n    height: 30px;\r\n    border-radius: 50%;\r\n    background-color: white;\r\n    margin: auto;\n}\n.line {\r\n    visibility: hidden;\r\n    height: 5px;\r\n    background-color: black;\r\n    width: 84px;\r\n    margin: 0 auto;\r\n    border-radius: 2px;\n}\n.active-board {\r\n    zoom: 1.1;\r\n    color: red;\r\n    transition-timing-function: linear;\r\n    transition: zoom 2s;\n}\n.game_info {\r\n    caret-color: transparent;\r\n    position: absolute;\r\n    top: 40px;\r\n    left: 50%;\r\n    transform: translate(-50%, 0);\r\n    color: white;\r\n    display: flex;\r\n    gap: 40px;\r\n    font-size: 25px;\n}\n.game_info__opponent {\r\n    flex-flow: row-reverse;\n}\n.game_info__user {\r\n    flex-flow: row;\n}\n.game_info-block {\r\n    display: flex;\r\n    flex-flow: column;\n}\n.section__number {\r\n    color: white;\r\n    font-size: 20px;\n}\n.not-clickable {\r\n    pointer-events: none;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
