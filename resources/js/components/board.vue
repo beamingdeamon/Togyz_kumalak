@@ -19,7 +19,6 @@
                     <div v-else v-for="item in column" :key="item" class="kumalak"></div>
                 </div>
                 <div class="line"></div>
-                <label>{{column}}</label>
             </div>
             <div :class="data?.user?.email === userInfo?.email ? '' : 'not-clickable'" 
                   v-for="(column, index) in userColumn" :key="index">
@@ -30,7 +29,6 @@
                     </div>
                 </div>
                 <div class="line"></div>
-                <label >{{column}}</label>
             </div>
         </div>
     </div>
@@ -71,7 +69,7 @@ export default {
                 })
             }, 3000)
         },
-        async userMove() {
+        async userMove(index) {
             if(this.data && this.data.user && this.data.user.email) {
                 if(this.userInfo && this.userInfo.email) {
                     if(this.data.user.email === this.userInfo.email) {
@@ -100,7 +98,7 @@ export default {
                 alert('Не ваш ход!')
             }
         },
-        async opponentMove() {
+        async opponentMove(index) {
             if(this.data && this.data.user && this.data.user.email) {
                 if(this.userInfo && this.userInfo.email) {
                     if(this.data.opponent.email === this.userInfo.email) {
