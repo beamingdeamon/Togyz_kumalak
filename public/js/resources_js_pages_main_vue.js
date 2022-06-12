@@ -44,6 +44,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.next = 3;
                 return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/register', _this.data).then(function (res) {
                   if (res.status === 200) {
+                    console.log('test');
                     alert('Вы успешно зарегистрировалсь!');
                     location.reload();
                     debugger;

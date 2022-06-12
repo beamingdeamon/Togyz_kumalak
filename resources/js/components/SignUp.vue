@@ -27,10 +27,11 @@ export default {
         await axios.post('/api/register', this.data)
         .then(res => {
             if(res.status === 200) {
-                alert('Вы успешно зарегистрировалсь!')
-                location.reload()
-                debugger
-                this.$emit('close')
+              console.log('test')
+              alert('Вы успешно зарегистрировалсь!')
+              location.reload()
+              debugger
+              this.$emit('close')
             }
         })
       }

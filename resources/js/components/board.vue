@@ -67,7 +67,7 @@ export default {
                 })
                 await apiClient.get('/game/get/' +this.$route.params.id)
                 .then(res => {
-                        setGameData(res)
+                        this.setGameData(res)
                 })
             }, 3000)
         },
@@ -83,7 +83,7 @@ export default {
                             apiClient.post('/game/usermove/' + this.$route.params.id, { 'column' : index + 1})
                             .then(res => {
                                 if(res.status === 200) {
-                                    setGameData(res);
+                                    this.setGameData(res);
                                 }
                                 else if(res.status === 300) {
                                     alert('Вы не можете ходить пустой колонкой!')
@@ -112,7 +112,7 @@ export default {
                             apiClient.post('/game/opponentmove/' + this.$route.params.id,  { 'column' : 9 - index })
                             .then(res => {
                                 if(res.status === 200) {
-                                    setGameData(res);
+                                    this.setGameData(res);
                                 }
                                 else if(res.status === 300) {
                                     alert('Вы не можете ходить пустой колонкой!')
