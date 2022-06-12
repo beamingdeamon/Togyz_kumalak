@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div :class="data?.opponent?.email !== userInfo?.email ? 'game_info__opponent' : 'game_info__user'" class="game_info" v-if="data">
+        <div :class="data?.opponent?.email === userInfo?.email ? 'game_info__opponent' : 'game_info__user'" class="game_info" v-if="data">
             <div class="game_info-block">
                 <label :class="move === 0 ? 'active-board' : ''" class="name">{{data.user.name}}</label>
                 <label class="kazan">Казан {{data.user_column.kazan}}</label>
@@ -10,7 +10,28 @@
                 <label class="kazan">Казан {{data.opponent_column.kazan}}</label>
             </div>
         </div>
-        <div :class="data?.opponent?.email !== userInfo?.email ? 'game_info__opponent' : 'game_info__user'" class="board">
+        <div v-if="data?.opponent?.email !== userInfo?.email" class="board">
+            <div :class="data?.user?.email === userInfo?.email ? '' : 'not-clickable'" 
+                  v-for="(column, index) in userColumn" :key="index">
+                <label class="section__number">{{column}}</label>
+                <div class="section" @click="userMove(index)">
+                    <div v-if="column == -1" class="tozdyk"></div>
+                    <div v-else v-for="item in column" :key="item" class="kumalak">
+                    </div>
+                </div>
+                <div class="line"></div>
+            </div>
+            <div :class="data?.opponent?.email === userInfo?.email ? '' : 'not-clickable'" 
+                v-for="(column, index) in opponentColumn" :key="index">
+                <label class="section__number">{{column}}</label>
+                <div class="section" @click="opponentMove(index)">
+                    <div v-if="column == -1" class="tozdyk"></div>
+                    <div v-else v-for="item in column" :key="item" class="kumalak"></div>
+                </div>
+                <div class="line"></div>
+            </div>
+        </div>
+        <div v-if="data?.opponent?.email === userInfo?.email" class="board">
             <div :class="data?.opponent?.email === userInfo?.email ? '' : 'not-clickable'" 
                 v-for="(column, index) in opponentColumn" :key="index">
                 <label class="section__number">{{column}}</label>

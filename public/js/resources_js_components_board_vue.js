@@ -29,8 +29,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       data: null,
       move: 0,
       userColumn: [9, 9, 9, 9, 9, 9, 9, 9, 9],
-      opponentColumn: [9, 9, 9, 9, 9, 9, 9, 9, 9],
-      isOpponent: true
+      opponentColumn: [9, 9, 9, 9, 9, 9, 9, 9, 9]
     };
   },
   methods: {
@@ -79,10 +78,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context2.next = 3;
                 return apiClient.get('/game/get/' + _this2.$route.params.id).then(function (res) {
                   _this2.setGameData(res);
-
-                  if (res.data.user.email === _this2.userInfo.email) {
-                    _this2.isOpponent = false;
-                  }
                 });
 
               case 3:
@@ -260,39 +255,79 @@ var _hoisted_4 = {
   "class": "kazan"
 };
 var _hoisted_5 = {
+  key: 1,
+  "class": "board"
+};
+var _hoisted_6 = {
   "class": "section__number"
 };
-var _hoisted_6 = ["onClick"];
-var _hoisted_7 = {
+var _hoisted_7 = ["onClick"];
+var _hoisted_8 = {
   key: 0,
   "class": "tozdyk"
 };
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "line"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_9 = {
+var _hoisted_10 = {
   "class": "section__number"
 };
-var _hoisted_10 = ["onClick"];
-var _hoisted_11 = {
+var _hoisted_11 = ["onClick"];
+var _hoisted_12 = {
   key: 0,
   "class": "tozdyk"
 };
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "line"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_14 = {
+  key: 2,
+  "class": "board"
+};
+var _hoisted_15 = {
+  "class": "section__number"
+};
+var _hoisted_16 = ["onClick"];
+var _hoisted_17 = {
+  key: 0,
+  "class": "tozdyk"
+};
+
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "line"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_19 = {
+  "class": "section__number"
+};
+var _hoisted_20 = ["onClick"];
+var _hoisted_21 = {
+  key: 0,
+  "class": "tozdyk"
+};
+
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "line"
 }, null, -1
 /* HOISTED */
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _$data$data, _$data$data$opponent, _$data$userInfo, _$data$data2, _$data$data2$opponent, _$data$userInfo2, _$data$data5, _$data$data5$opponent, _$data$userInfo5;
+
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [$data.data ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
     key: 0,
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$data.isOpponent ? 'game_info__opponent' : 'game_info__user', "game_info"])
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([((_$data$data = $data.data) === null || _$data$data === void 0 ? void 0 : (_$data$data$opponent = _$data$data.opponent) === null || _$data$data$opponent === void 0 ? void 0 : _$data$data$opponent.email) === ((_$data$userInfo = $data.userInfo) === null || _$data$userInfo === void 0 ? void 0 : _$data$userInfo.email) ? 'game_info__opponent' : 'game_info__user', "game_info"])
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$data.move === 0 ? 'active-board' : '', "name"])
   }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.data.user.name), 3
@@ -308,51 +343,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   )])], 2
   /* CLASS */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$data.isOpponent ? 'game_info__opponent' : 'game_info__user', "board"])
-  }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.opponentColumn, function (column, index) {
-    var _$data$data, _$data$data$opponent, _$data$userInfo;
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), ((_$data$data2 = $data.data) === null || _$data$data2 === void 0 ? void 0 : (_$data$data2$opponent = _$data$data2.opponent) === null || _$data$data2$opponent === void 0 ? void 0 : _$data$data2$opponent.email) !== ((_$data$userInfo2 = $data.userInfo) === null || _$data$userInfo2 === void 0 ? void 0 : _$data$userInfo2.email) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.userColumn, function (column, index) {
+    var _$data$data3, _$data$data3$user, _$data$userInfo3;
 
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(((_$data$data = $data.data) === null || _$data$data === void 0 ? void 0 : (_$data$data$opponent = _$data$data.opponent) === null || _$data$data$opponent === void 0 ? void 0 : _$data$data$opponent.email) === ((_$data$userInfo = $data.userInfo) === null || _$data$userInfo === void 0 ? void 0 : _$data$userInfo.email) ? '' : 'not-clickable'),
+      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(((_$data$data3 = $data.data) === null || _$data$data3 === void 0 ? void 0 : (_$data$data3$user = _$data$data3.user) === null || _$data$data3$user === void 0 ? void 0 : _$data$data3$user.email) === ((_$data$userInfo3 = $data.userInfo) === null || _$data$userInfo3 === void 0 ? void 0 : _$data$userInfo3.email) ? '' : 'not-clickable'),
       key: index
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(column), 1
-    /* TEXT */
-    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-      "class": "section",
-      onClick: function onClick($event) {
-        return $options.opponentMove(index);
-      }
-    }, [column == -1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_7)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-      key: 1
-    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(column, function (item) {
-      return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-        key: item,
-        "class": "kumalak"
-      });
-    }), 128
-    /* KEYED_FRAGMENT */
-    ))], 8
-    /* PROPS */
-    , _hoisted_6), _hoisted_8], 2
-    /* CLASS */
-    );
-  }), 128
-  /* KEYED_FRAGMENT */
-  )), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.userColumn, function (column, index) {
-    var _$data$data2, _$data$data2$user, _$data$userInfo2;
-
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(((_$data$data2 = $data.data) === null || _$data$data2 === void 0 ? void 0 : (_$data$data2$user = _$data$data2.user) === null || _$data$data2$user === void 0 ? void 0 : _$data$data2$user.email) === ((_$data$userInfo2 = $data.userInfo) === null || _$data$userInfo2 === void 0 ? void 0 : _$data$userInfo2.email) ? '' : 'not-clickable'),
-      key: index
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(column), 1
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(column), 1
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
       "class": "section",
       onClick: function onClick($event) {
         return $options.userMove(index);
       }
-    }, [column == -1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_11)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    }, [column == -1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
       key: 1
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(column, function (item) {
       return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
@@ -363,14 +367,99 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* KEYED_FRAGMENT */
     ))], 8
     /* PROPS */
-    , _hoisted_10), _hoisted_12], 2
+    , _hoisted_7), _hoisted_9], 2
     /* CLASS */
     );
   }), 128
   /* KEYED_FRAGMENT */
-  ))], 2
-  /* CLASS */
-  )]);
+  )), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.opponentColumn, function (column, index) {
+    var _$data$data4, _$data$data4$opponent, _$data$userInfo4;
+
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(((_$data$data4 = $data.data) === null || _$data$data4 === void 0 ? void 0 : (_$data$data4$opponent = _$data$data4.opponent) === null || _$data$data4$opponent === void 0 ? void 0 : _$data$data4$opponent.email) === ((_$data$userInfo4 = $data.userInfo) === null || _$data$userInfo4 === void 0 ? void 0 : _$data$userInfo4.email) ? '' : 'not-clickable'),
+      key: index
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(column), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+      "class": "section",
+      onClick: function onClick($event) {
+        return $options.opponentMove(index);
+      }
+    }, [column == -1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_12)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+      key: 1
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(column, function (item) {
+      return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+        key: item,
+        "class": "kumalak"
+      });
+    }), 128
+    /* KEYED_FRAGMENT */
+    ))], 8
+    /* PROPS */
+    , _hoisted_11), _hoisted_13], 2
+    /* CLASS */
+    );
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), ((_$data$data5 = $data.data) === null || _$data$data5 === void 0 ? void 0 : (_$data$data5$opponent = _$data$data5.opponent) === null || _$data$data5$opponent === void 0 ? void 0 : _$data$data5$opponent.email) === ((_$data$userInfo5 = $data.userInfo) === null || _$data$userInfo5 === void 0 ? void 0 : _$data$userInfo5.email) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.opponentColumn, function (column, index) {
+    var _$data$data6, _$data$data6$opponent, _$data$userInfo6;
+
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(((_$data$data6 = $data.data) === null || _$data$data6 === void 0 ? void 0 : (_$data$data6$opponent = _$data$data6.opponent) === null || _$data$data6$opponent === void 0 ? void 0 : _$data$data6$opponent.email) === ((_$data$userInfo6 = $data.userInfo) === null || _$data$userInfo6 === void 0 ? void 0 : _$data$userInfo6.email) ? '' : 'not-clickable'),
+      key: index
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(column), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+      "class": "section",
+      onClick: function onClick($event) {
+        return $options.opponentMove(index);
+      }
+    }, [column == -1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_17)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+      key: 1
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(column, function (item) {
+      return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+        key: item,
+        "class": "kumalak"
+      });
+    }), 128
+    /* KEYED_FRAGMENT */
+    ))], 8
+    /* PROPS */
+    , _hoisted_16), _hoisted_18], 2
+    /* CLASS */
+    );
+  }), 128
+  /* KEYED_FRAGMENT */
+  )), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.userColumn, function (column, index) {
+    var _$data$data7, _$data$data7$user, _$data$userInfo7;
+
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(((_$data$data7 = $data.data) === null || _$data$data7 === void 0 ? void 0 : (_$data$data7$user = _$data$data7.user) === null || _$data$data7$user === void 0 ? void 0 : _$data$data7$user.email) === ((_$data$userInfo7 = $data.userInfo) === null || _$data$userInfo7 === void 0 ? void 0 : _$data$userInfo7.email) ? '' : 'not-clickable'),
+      key: index
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(column), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+      "class": "section",
+      onClick: function onClick($event) {
+        return $options.userMove(index);
+      }
+    }, [column == -1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_21)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+      key: 1
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(column, function (item) {
+      return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+        key: item,
+        "class": "kumalak"
+      });
+    }), 128
+    /* KEYED_FRAGMENT */
+    ))], 8
+    /* PROPS */
+    , _hoisted_20), _hoisted_22], 2
+    /* CLASS */
+    );
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
 }
 
 /***/ }),
