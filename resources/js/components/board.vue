@@ -10,7 +10,7 @@
                 <label class="kazan">Казан {{data.opponent_column.kazan}}</label>
             </div>
         </div>
-        <div v-if="data?.opponent?.email !== userInfo?.email" class="board">
+        <div v-if="data?.opponent?.email === userInfo?.email" class="board">чё
             <div :class="data?.user?.email === userInfo?.email ? '' : 'not-clickable'" 
                   v-for="(column, index) in userColumn" :key="index">
                 <label class="section__number">{{column}}</label>
@@ -31,7 +31,7 @@
                 <div class="line"></div>
             </div>
         </div>
-        <div v-if="data?.opponent?.email === userInfo?.email" class="board">
+        <div v-if="data?.opponent?.email !== userInfo?.email" class="board">
             <div :class="data?.opponent?.email === userInfo?.email ? '' : 'not-clickable'" 
                 v-for="(column, index) in opponentColumn" :key="index">
                 <label class="section__number">{{column}}</label>
