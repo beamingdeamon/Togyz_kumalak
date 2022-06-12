@@ -179,12 +179,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     setGameData: function setGameData(res) {
-      var _data, _data$opponent, _userInfo;
+      var _this$data, _this$data$opponent, _this$userInfo;
 
       this.move = res.data.move;
       this.data = res.data;
 
-      if (((_data = data) === null || _data === void 0 ? void 0 : (_data$opponent = _data.opponent) === null || _data$opponent === void 0 ? void 0 : _data$opponent.email) === ((_userInfo = userInfo) === null || _userInfo === void 0 ? void 0 : _userInfo.email)) {
+      if (((_this$data = this.data) === null || _this$data === void 0 ? void 0 : (_this$data$opponent = _this$data.opponent) === null || _this$data$opponent === void 0 ? void 0 : _this$data$opponent.email) === ((_this$userInfo = this.userInfo) === null || _this$userInfo === void 0 ? void 0 : _this$userInfo.email)) {
         var localUserColumn = [];
         localUserColumn.push(res.data.user_column.first_column);
         localUserColumn.push(res.data.user_column.second_column);

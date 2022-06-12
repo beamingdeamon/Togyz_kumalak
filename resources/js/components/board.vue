@@ -156,7 +156,7 @@ export default {
             this.move = res.data.move;
             this.data = res.data
 
-            if(data?.opponent?.email === userInfo?.email) {
+            if(this.data?.opponent?.email === this.userInfo?.email) {
                 let localUserColumn = [] 
                 localUserColumn.push(res.data.user_column.first_column)
                 localUserColumn.push(res.data.user_column.second_column)
