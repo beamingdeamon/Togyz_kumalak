@@ -94,7 +94,7 @@ export default {
     display: block;
     width: 400px;
     font-size: 30px;
-    color: white;
+    color: black;
     position: absolute;
     top: -40%;
     left: 35%;

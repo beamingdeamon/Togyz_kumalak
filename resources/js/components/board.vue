@@ -248,7 +248,7 @@ export default {
 
     width: 80px;
     height: 200px;
-    background-color: aqua;
+    background-color: #edae47;
     margin: 5px;
     border: 3px solid black;
     border-radius: 5px;
@@ -296,7 +296,7 @@ export default {
     top: 40px;
     left: 50%;
     transform: translate(-50%, 0);
-    color: white;
+    color: black;
     display: flex;
     gap: 40px;
     font-size: 25px;
@@ -315,7 +315,7 @@ export default {
 }
 
 .section__number {
-    color: white;
+    color: black;
     font-size: 20px;
 }
 
