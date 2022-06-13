@@ -49,9 +49,11 @@ h2{
   color: white;
 }
 .login {
+    font-family: cursive;
     display: flex;
     flex-flow: column;
     gap: 20px;
+    padding: 20px 40px;
 
     position: absolute;
     top: 50%;
@@ -61,20 +63,17 @@ h2{
     width: 450px !important;
     height: 350px !important;
 
-    background-color: rgb(0, 0, 0) !important;
+    background-color: #47b571 !important;
 
     border-radius: 10px;
 }
 .input_wrappers{
-  margin-left: 4vw;
-  margin-top: 7vh;
-  height: 80%;
   display: flex;
   flex-direction: column;
 }
 .login__input {
-  margin-left: 1vw;
   height: 25px;
+  font-size: 16px;
   width: 65%;
   border-radius: 5px;
   border-color: white;
@@ -83,14 +82,14 @@ h2{
 .login__button {
     width: 177px;
     height: 30px;
-    background-color: rgb(88, 8, 8) !important;
+    background-color: cornflowerblue !important;
     border-color: transparent;
     border-radius: 5px;
     color: white;
     font-size: 17px;
     cursor: pointer;
     margin-top: 7vh;
-    margin-left: 49%;
+    margin-bottom: 7vh;
 }
 
 .login__close {

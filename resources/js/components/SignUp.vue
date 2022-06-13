@@ -45,6 +45,7 @@ export default {
 
 <style>
 .register {
+    font-family: cursive;
     display: flex;
     flex-flow: column;
     gap: 20px;
@@ -57,13 +58,12 @@ export default {
     width: 450px !important;
     height: 420px !important;
 
-    background-color: rgb(0, 0, 0) !important;
+    background-color: #47b571 !important;
 
     border-radius: 10px;
 }
 .reg_input_wrappers{
   margin-left: 4vw;
-  margin-top: 7vh;
   height: 85%;
   display: flex;
   flex-direction: column;
@@ -72,14 +72,13 @@ export default {
     
     width: 210px;
     height: 50px;
-    background-color: rgb(88, 8, 8) !important;
+    background-color: cornflowerblue !important;
     border-color: transparent;
     border-radius: 5px;
     color: white;
     font-size: 17px;
     cursor: pointer;
     margin-top: 5vh;
-    margin-left: 42%;
 }
 
 </style>

@@ -62,7 +62,7 @@ export default {
 .create_game_button{
   width: 300px;
   height: 90px;
-  background-color: black;
+  background-color: cornflowerblue;
   border-color: transparent;
   border-radius: 5px;
   color: white;
@@ -72,7 +72,7 @@ export default {
 .options__button {
   width: 300px;
   height: 90px;
-  background-color: black;
+  background-color: cornflowerblue;
   border-color: transparent;
   border-radius: 5px;
   color: white;

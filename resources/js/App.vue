@@ -19,7 +19,6 @@ body{
   width: 100vw;
   height: 8vh;
   justify-content: center;
-  background-color: rgb(10, 12, 14);
   position: fixed;
   backdrop-filter: blur(20px);
 }
@@ -36,7 +35,7 @@ body{
 .wrapper{
   height: 100vh;
   width: 100vw;
-  background-color: rgb(56, 56, 56);
+  background-color: #f0f2f0;
 }
 .center {
   position: absolute;
