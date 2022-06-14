@@ -15,32 +15,43 @@
                   v-for="(column, index) in userColumn" :key="index">
                 <label v-if="column == -1" class="section__number"></label>
                 <label class="section__number">{{column}}</label>
-                <div class="section" @click="userMove(index)">
+                <div class="section" v-if="column < 11">
                     <div v-if="column == -1" class="tozdyk"></div>
                     <div v-else v-for="item in column" :key="item" class="kumalak">
                     </div>
                 </div>
+                <div class="section" v-else>
+                    <div v-for="item in 10" :key="item" class="kumalak"></div>
+                </div>
                 <div class="line"></div>
             </div>
             <div :class="data?.opponent?.email === userInfo?.email ? '' : 'not-clickable'" 
                 v-for="(column, index) in opponentColumn" :key="index">
                 <label v-if="column == -1" class="section__number"></label>
                 <label class="section__number">{{column}}</label>
-                <div class="section" @click="opponentMove(index)">
+                <div class="section" v-if="column < 11" @click="opponentMove(index)">
                     <div v-if="column == -1" class="tozdyk"></div>
-                    <div v-else v-for="item in column" :key="item" class="kumalak"></div>
+                    <div v-else v-for="item in column" :key="item" class="kumalak">
+                    </div>
+                </div>
+                <div class="section" v-else @click="opponentMove(index)">
+                    <div v-for="item in 10" :key="item" class="kumalak"></div>
                 </div>
                 <div class="line"></div>
             </div>
         </div>
-        <div v-if="data?.opponent?.email !== userInfo?.email" class="board">
+        <div v-else class="board">
             <div :class="data?.opponent?.email === userInfo?.email ? '' : 'not-clickable'" 
                 v-for="(column, index) in opponentColumn" :key="index">
                 <label v-if="column == -1" class="section__number"></label>
                 <label class="section__number">{{column}}</label>
-                <div class="section" @click="opponentMove(index)">
+                <div class="section" v-if="column < 11">
                     <div v-if="column == -1" class="tozdyk"></div>
-                    <div v-else v-for="item in column" :key="item" class="kumalak"></div>
+                    <div v-else v-for="item in column" :key="item" class="kumalak">
+                    </div>
+                </div>
+                <div class="section" v-else>
+                    <div v-for="item in 10" :key="item" class="kumalak"></div>
                 </div>
                 <div class="line"></div>
             </div>
@@ -48,10 +59,13 @@
                   v-for="(column, index) in userColumn" :key="index">
                 <label v-if="column == -1" class="section__number"></label>
                 <label class="section__number">{{column}}</label>
-                <div class="section" @click="userMove(index)">
+                <div class="section" v-if="column < 11" @click="userMove(index)">
                     <div v-if="column == -1" class="tozdyk"></div>
                     <div v-else v-for="item in column" :key="item" class="kumalak">
                     </div>
+                </div>
+                <div class="section" v-else @click="userMove(index)">
+                    <div v-for="item in 10" :key="item" class="kumalak"></div>
                 </div>
                 <div class="line"></div>
             </div>
@@ -95,6 +109,7 @@ export default {
             }, 3000)
         },
         async userMove(index) {
+            debugger
             if(this.data && this.data.user && this.data.user.email) {
                 if(this.userInfo && this.userInfo.email) {
                     if(this.data.user.email === this.userInfo.email) {
@@ -124,6 +139,7 @@ export default {
             }
         },
         async opponentMove(index) {
+            debugger
             if(this.data && this.data.user && this.data.user.email) {
                 if(this.userInfo && this.userInfo.email) {
                     if(this.data.opponent.email === this.userInfo.email) {
@@ -183,26 +199,26 @@ export default {
             }
             else {
                 let localUserColumn = [] 
-                localOppCol.push(res.data.user_column.first_column)
-                localOppCol.push(res.data.user_column.second_column)
-                localOppCol.push(res.data.user_column.three_column)
-                localOppCol.push(res.data.user_column.four_column)
-                localOppCol.push(res.data.user_column.five_column)
-                localOppCol.push(res.data.user_column.six_column)
-                localOppCol.push(res.data.user_column.seven_column)
-                localOppCol.push(res.data.user_column.eight_column)
-                localOppCol.push(res.data.user_column.nine_column)
-
                 let localOppCol = []
-                localUserColumn.push(res.data.opponent_column.nine_column)
-                localUserColumn.push(res.data.opponent_column.eight_column)
-                localUserColumn.push(res.data.opponent_column.seven_column)
-                localUserColumn.push(res.data.opponent_column.six_column)
-                localUserColumn.push(res.data.opponent_column.five_column) 
-                localUserColumn.push(res.data.opponent_column.four_column)  
-                localUserColumn.push(res.data.opponent_column.three_column)
-                localUserColumn.push(res.data.opponent_column.second_column)
-                localUserColumn.push(res.data.opponent_column.first_column)
+                localOppCol.push(res.data.opponent_column.first_column)
+                localOppCol.push(res.data.opponent_column.second_column)
+                localOppCol.push(res.data.opponent_column.three_column)
+                localOppCol.push(res.data.opponent_column.four_column)
+                localOppCol.push(res.data.opponent_column.five_column)
+                localOppCol.push(res.data.opponent_column.six_column)
+                localOppCol.push(res.data.opponent_column.seven_column)
+                localOppCol.push(res.data.opponent_column.eight_column)
+                localOppCol.push(res.data.opponent_column.nine_column)
+
+                localUserColumn.push(res.data.user_column.nine_column)
+                localUserColumn.push(res.data.user_column.eight_column)
+                localUserColumn.push(res.data.user_column.seven_column)
+                localUserColumn.push(res.data.user_column.six_column)
+                localUserColumn.push(res.data.user_column.five_column) 
+                localUserColumn.push(res.data.user_column.four_column)  
+                localUserColumn.push(res.data.user_column.three_column)
+                localUserColumn.push(res.data.user_column.second_column)
+                localUserColumn.push(res.data.user_column.first_column)
                 this.opponentColumn = localOppCol
                 this.userColumn = localUserColumn;
             }
@@ -264,6 +280,10 @@ export default {
     border-radius: 50%;
     background-color: saddlebrown;
     margin: auto;
+}
+
+.kumalak__11 {
+    margin-top: 5px;
 }
 
 .tozdyk {
